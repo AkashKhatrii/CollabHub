@@ -103,3 +103,21 @@
     display: none;
   }
 }
+
+@media only screen and (max-width: 480px) {
+  header {
+      padding: 1rem 0.5rem;
+  }
+
+  .header-logo h2 {
+      font-size: 1.2rem;
+  }
+
+  .menu-toggle {
+      font-size: 1.2rem;
+  }
+
+  .header-links li a {
+      padding: 0.5rem 0;
+  }
+}
