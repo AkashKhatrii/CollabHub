@@ -33,4 +33,24 @@
 
 .features-info .features-column{
     width: 48%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+@media only screen and (max-width: 800px) {
+    .features-info {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .features-info .features-column{
+        width: 98%;
+        align-items: center;
+    }
+
 }

@@ -4,7 +4,7 @@
     flex-direction: column;
     background-color: #e0e0e0;
     border-bottom: 1px solid #ddd;
-    max-width: 500px;
+    width: 70%;
     transition: height 0.5s ease-out;
     overflow: hidden; /* Hide overflow content */
     transition: max-height 0.5s ease-out, padding 0.5s ease-out, transform 0.3s;
