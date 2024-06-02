@@ -11,6 +11,8 @@
     border-radius: 8px;
     margin: 1rem;
     box-shadow: 5px 5px 10px #c7c7c7, -5px -5px 10px #ffffff;
+    position: relative;
+    z-index: 10;
   }
 
   .header-logo h2{
@@ -52,4 +54,53 @@
     background-color: rgba(255, 255, 255, 0.1);
   }
   
-  
+@media only screen and (max-width: 800px){
+  header{
+    flex-direction: column;
+    padding: 1rem;
+  }
+
+  .header-nav{
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+  }
+
+  .header-nav.active{
+    display: flex;
+  }
+
+  .header-links{
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+  }
+
+  .header-links li a{
+    width: 100%;
+    padding: 1rem 0;
+  }
+
+  .header-logo{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
+  .menu-toggle{
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #333;
+    display: block;
+  }
+}
+
+@media only screen and (min-width: 810px){
+  .menu-toggle{
+    display: none;
+  }
+}

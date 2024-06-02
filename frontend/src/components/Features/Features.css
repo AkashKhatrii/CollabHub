@@ -24,11 +24,18 @@
     
 }
 
+.features-heading > p {
+    font-size: 1rem; /* Added this to style the paragraph under the heading */
+    color: #777; /* Light grey color for paragraph */
+    margin: 1rem 0; /* Added margin for spacing */
+}
+
 .features-section-wrapper .features-info{
     width: 100%;
     display: flex;
     justify-content: center;
     padding: 1rem;
+    flex-wrap: wrap;
     
 }
 
@@ -38,20 +45,19 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-bottom: 1rem;
 }
 
 
 @media only screen and (max-width: 800px) {
     .features-info {
-      display: flex;
       flex-direction: column;
-      justify-content: center;
+      /* justify-content: center; */
       align-items: center;
-      padding: 1rem;
     }
 
     .features-info .features-column{
-        width: 98%;
+        width: 90%;
     }
 
 }

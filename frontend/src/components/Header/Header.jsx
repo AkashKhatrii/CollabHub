@@ -1,13 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Header.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
 export default function Header(){
+
+    const [menuActive, setMenuActive] = useState(false);
+
+    const toggleMenu = () => {
+        setMenuActive(!menuActive);
+    }
   return (
     <header>
         <div className='header-logo'>
             <h2>CollabMate</h2>
+            <FontAwesomeIcon icon={menuActive ? faTimes : faBars} className='menu-toggle' onClick={toggleMenu}/>
         </div>
 
-        <div className='header-nav'>
+        <div className={`header-nav ${menuActive ? 'active' : ''}`}>
             <nav>
                 <ul className='header-links'>
                     <li><a href="#home">Home</a></li>
