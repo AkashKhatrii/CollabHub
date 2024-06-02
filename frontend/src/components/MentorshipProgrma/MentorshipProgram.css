@@ -1,0 +1,112 @@
+.mentorship-program-section {
+    padding: 4rem 2rem;
+    /* text-align: center; */
+    margin: 1rem;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 5px 5px 10px #c7c7c7, -5px -5px 10px #ffffff;
+  }
+
+  .mentorship-program-section-wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .mentorship-program-section-wrapper .heading{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+.mentorship-program-section-wrapper .heading h2{
+    margin: 0;
+    color: #FF5722; 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+  
+  .mentorship-program-section .content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  
+  .mentorship-titles {
+    flex: 1;
+    padding: 2rem;
+  }
+  
+  .mentorship-item {
+    margin-bottom: 1rem;
+    cursor: pointer;
+    transition: transform 0.2s;
+    background-color: transparent;
+    margin: 0.5rem 1rem;
+    /* box-shadow: 5px 5px 10px #c7c7c7, -5px -5px 10px #ffffff; */
+  }
+  
+  .mentorship-item:hover {
+    transform: translateY(-5px);
+  }
+
+  .mentorship-title-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .mentorship-icon {
+    margin-right: 10px;
+    font-size: 1.25rem;
+    color: #333;
+  }
+  
+  .mentorship-title {
+    font-size: 1.5rem;
+    color: #333;
+    font-family: 'Roboto', sans-serif;
+  }
+
+  /* .mentorship-description {
+    font-size: 1rem;
+    color: #555;
+    font-family: 'Roboto', sans-serif;
+    margin-top: 0.2rem;
+    margin-left: 1.5rem;
+    transition: opacity 0.5s ease-out;
+  } */
+
+  .mentorship-description {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.9s ease, padding 0.3s ease;
+    padding: 0 10px;
+    font-size: 1rem;
+    color: #333;
+    margin-left: 1.3rem;
+  }
+  
+  .mentorship-description.show {
+    max-height: 100px;
+    /* padding: 10px; */
+  }
+  
+  .mentorship-image {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .mentorship-image img {
+    max-height: 100%;
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 5px 5px 10px #c7c7c7, -5px -5px 10px #ffffff;
+  }
+  

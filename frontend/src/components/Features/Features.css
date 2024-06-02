@@ -1,0 +1,36 @@
+.features-section{
+    padding: 4rem 2rem;
+    text-align: center;
+    margin: 1rem;
+    border-radius: 8px;
+    background-color: #f0f0f0;
+    box-shadow: 5px 5px 10px #c7c7c7, -5px -5px 10px #ffffff;
+}
+
+.features-section-wrapper{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    
+}
+
+.features-heading > h2{
+    margin: 0;
+    font-size: 1.8rem; 
+    color: #FF5722; 
+    
+}
+
+.features-section-wrapper .features-info{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+.features-info .features-column{
+    width: 48%;
+}

@@ -1,0 +1,31 @@
+.testimonial-section{
+    padding: 4rem 2rem;
+    text-align: center;
+    margin: 1rem;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 5px 5px 10px #c7c7c7, -5px -5px 10px #ffffff;
+}
+
+.testimonial-section-wrapper{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.testimonials-view{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 3rem;
+}
+
+.testimonials-heading > h2{
+    margin: 0;
+    color: #FF5722; 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
