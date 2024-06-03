@@ -27,7 +27,7 @@
   }
 
 
-  .mentorship-program-section-wrapper .heading{
+  .mentorship-program-section-wrapper .content .heading{
     /* width: 50%; */
     display: flex;
     flex-direction: column;
@@ -38,7 +38,7 @@
     /* margin-bottom: 4rem; */
   }
 
-.mentorship-program-section-wrapper .heading h2{
+.mentorship-program-section-wrapper .content .heading h2{
   font-size: 2rem;
   color: #FF5722; 
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -133,5 +133,15 @@
 @media only screen and (max-width: 800px){
   .mentorship-program-section-wrapper{
     flex-direction: column;
+  }
+}
+
+@media only screen and (max-width: 500px){
+  .mentorship-program-section-wrapper .content .heading h2{
+    font-size: 1.3rem;
+  }
+
+  .mentorship-program-section-wrapper .content .heading p{
+    font-size: 1rem;
   }
 }
