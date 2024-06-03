@@ -45,7 +45,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-bottom: 1rem;
+    /* margin-bottom: 1rem; */
 }
 
 
@@ -57,7 +57,7 @@
     }
 
     .features-info .features-column{
-        width: 90%;
+        width: 100%;
     }
-
+    
 }

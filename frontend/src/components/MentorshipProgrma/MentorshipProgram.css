@@ -42,6 +42,7 @@
   font-size: 2rem;
   color: #FF5722; 
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-align: center;
 }
   
   /* .mentorship-program-section .content {
@@ -138,10 +139,16 @@
 
 @media only screen and (max-width: 500px){
   .mentorship-program-section-wrapper .content .heading h2{
-    font-size: 1.3rem;
+    font-size: 1.4rem;
   }
 
   .mentorship-program-section-wrapper .content .heading p{
     font-size: 1rem;
   }
+
+  .mentorship-title{
+    font-size: 1.15rem;
+  }
+
+
 }

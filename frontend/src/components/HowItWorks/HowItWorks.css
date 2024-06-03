@@ -86,3 +86,23 @@
     background-color: #555;
   }
   
+
+  @media only screen and (max-width: 600px){
+    .how-it-works-section h2{
+      font-size: 1.4rem;
+    }
+
+    .step img {
+      width: 20px;
+      height: 20px;
+    }
+
+    .step h3 {
+      font-size: 1rem;
+    }
+
+    .cta button {
+      padding: 1rem 1rem;
+      font-size: 1rem;
+    }
+  }

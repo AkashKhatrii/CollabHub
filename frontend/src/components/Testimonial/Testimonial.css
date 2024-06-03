@@ -33,6 +33,7 @@
 
 @media only screen and (max-width: 500px){
     .testimonial{
-        width: 250px;
+        height: 300px;
+        padding: 1rem;
     }
 }

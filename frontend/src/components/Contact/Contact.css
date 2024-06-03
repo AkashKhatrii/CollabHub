@@ -30,12 +30,13 @@
 .contact-section-wrapper h2{
     color: #FF5722;
     font-size: 1.8rem; 
-    margin: 0;
+    margin: 1rem;
 }
 .contact-section-wrapper p{
     width: 500px;
     font-size: 1.1rem;
-    margin: none;
+    margin: 1rem;
+    margin-top: 0;
 }
 
 .input input{
