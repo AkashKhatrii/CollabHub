@@ -9,7 +9,7 @@
     background-position: center; 
     background-repeat: no-repeat; 
     background-size: cover;
-    height: 70vh;
+    min-height: 70vh;
     overflow: hidden;
     box-sizing: border-box;
 }
@@ -26,9 +26,9 @@
 }
 
 .about-info{
-    /* width: 100%; */
-    box-sizing: border-box;
-    height: auto;
+    width: 100%;
+    /* box-sizing: border-box; */
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -60,7 +60,7 @@
 @media only screen and (max-width: 800px){
 
     .about-section{
-        height: auto;
+        min-height: auto;
         padding: 2rem 1rem;
     }
 

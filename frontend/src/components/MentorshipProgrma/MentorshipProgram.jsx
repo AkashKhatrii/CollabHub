@@ -17,11 +17,12 @@ export default function MentorshipProgram() {
   return (
     <section className="mentorship-program-section">
       <div className="mentorship-program-section-wrapper">
-      <div className='heading'>
-        <h2>Mentorship Program</h2>
-        <p>At CollabMate, we empower students with mentorship to fast-track their learning and professional growth. Our program provides diverse mentoring opportunities, ensuring students achieve their goals and navigate their academic and career paths confidently.</p>
+      <div className='content'>
+        <div className='heading'>
+          <h2>Mentorship Program</h2>
+          <p>At CollabMate, we empower students with mentorship to fast-track their learning and professional growth. Our program provides diverse mentoring opportunities, ensuring students achieve their goals and navigate their academic and career paths confidently.</p>
         </div>
-        <div className='content'>
+
         <div className="mentorship-titles">
 
           {mentors.map((mentor, index) => (
@@ -39,10 +40,11 @@ export default function MentorshipProgram() {
             </div>
           ))}
         </div>
+      </div>
         <div className="mentorship-image">
           <img src="./images/collaboration.jpg" alt="Mentorship" />
         </div>
-        </div>
+
       </div>
     </section>
   );
