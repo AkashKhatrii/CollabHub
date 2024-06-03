@@ -1,6 +1,5 @@
   
   header{
-    width: 100vw;
     background-color: #f0f0f0;
     display: flex;
     justify-content: space-between;
@@ -9,9 +8,9 @@
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     box-shadow: 5px 5px 10px #c7c7c7, -5px -5px 10px #ffffff;
-    margin: 1rem;
-    position: relative;
+    margin: 1rem 1rem;
     z-index: 10;
+    box-sizing: border-box;
   }
 
   .header-logo h2{
