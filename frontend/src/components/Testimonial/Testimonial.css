@@ -1,8 +1,8 @@
 .testimonial{
     width: 300px;
     padding: 1rem 2rem;
-    /* background-color: #e0e0e0; */
-    background-color: #fff3f3;
+    /* background-color: #fff3f3; */
+    background-color: #555;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -14,10 +14,10 @@
     /* box-shadow: 5px 5px 10px #cfcfcf, -5px -5px 10px #ffffff; */
 }
 
-.testimonial:hover{
+/* .testimonial:hover{
     scale: 1.05;
     box-shadow: 5px 5px 10px #cfcfcf, -5px -5px 10px #ffffff;
-}
+} */
 .testimonial .reviews{
     color: orange;
 }

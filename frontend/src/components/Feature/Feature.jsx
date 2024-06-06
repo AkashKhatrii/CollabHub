@@ -11,11 +11,11 @@ export default function Feature(props){
             <button onClick={() => setShowDesc(!showDesc)}>{showDesc ? '-' : '+'}</button>
             </div>
 
-            { showDesc &&
-            <div className="bottom">
+            {/* { showDesc && */}
+            <div className={`bottom ${showDesc ? 'active' : ''}`}>
             <p>{props.desc}</p>
             </div>
-            }
+            {/* } */}
         </div>
     )
 }

@@ -3,12 +3,15 @@
     text-align: center;
     margin: 1rem;
     border-radius: 8px;
-    background-color: #fff;
+    /* background-color: #fff; */
+    background-color: #2f2f2f;
     background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6) ), url('/images/collaboration.jpg');
     background-position: center; 
     background-repeat: no-repeat; 
     background-size: cover;
-    box-shadow: 5px 5px 10px #c7c7c7, -5px -5px 10px #ffffff;
+    /* box-shadow: 5px 5px 10px #c7c7c7, -5px -5px 10px #ffffff; */
+    box-shadow: 5px 5px 10px #1a1a1a, -3px -3px 6px #3f3f3f;
+
 }
 
 .contact-section-wrapper{

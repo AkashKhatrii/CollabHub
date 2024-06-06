@@ -3,8 +3,11 @@
     text-align: center;
     margin: 1rem;
     border-radius: 8px;
-    background-color: #f0f0f0;
-    box-shadow: 5px 5px 10px #c7c7c7, -5px -5px 10px #ffffff;
+    /* background-color: #f0f0f0;
+    box-shadow: 5px 5px 10px #c7c7c7, -5px -5px 10px #ffffff; */
+
+    background-color: #2f2f2f;
+    box-shadow: 5px 5px 10px #1a1a1a, -3px -3px 6px #3f3f3f;
   }
   
   .how-it-works-section h2 {
@@ -23,7 +26,8 @@
   }
   
   .step {
-    background-color: #e0e0e0;
+    /* background-color: #e0e0e0; */
+    background-color: #444;
     border-radius: 15px;
     /* box-shadow: 5px 5px 10px #b0b0b0, -5px -5px 10px #ffffff; */
     padding: 1.5rem;
@@ -34,13 +38,15 @@
     /* flex: 1 1 30%; */
   }
 
-  .step:hover{
+  /* .step:hover{
     scale: 1.05;
-    box-shadow: 5px 5px 10px #cfcfcf, -5px -5px 10px #ffffff;
-  }
+    /* box-shadow: 5px 5px 10px #cfcfcf, -5px -5px 10px #ffffff; */
+    /* box-shadow: 5px 5px 10px #4d4d4d, -3px -3px 6px #1a1a1a; Neumorphism effect on hover */
+
+  /* } */ 
   
   .step .fa-icon {
-    color: #1E88E5; /* Dark Orange */
+    color: #1E88E5; 
     margin-bottom: 1rem;
   }
 
@@ -55,14 +61,16 @@
   .step h3 {
     font-size: 1.5rem;
     font-family: 'Georgia', serif;
-    color: #222;
+    /* color: #222; */
+    color: #fff;
     margin-bottom: 0.5rem;
   }
   
   .step p {
     font-size: 1rem;
     font-family: 'Arial', sans-serif;
-    color: #555;
+    /* color: #555; */
+    color: #ddd;
   }
   
   .cta {
@@ -78,12 +86,14 @@
     border: none;
     border-radius: 10px;
     cursor: pointer;
-    box-shadow: 5px 5px 10px #c7c7c7, -5px -5px 10px #ffffff;
+    /* box-shadow: 5px 5px 10px #c7c7c7, -5px -5px 10px #ffffff; */
+    box-shadow: 5px 5px 10px #1a1a1a, -3px -3px 6px #4d4d4d; /* Neumorphism effect */
     transition: background-color 0.3s;
   }
   
   .cta button:hover {
-    background-color: #555;
+    /* background-color: #555; */
+    background-color: #FF5722;
   }
   
 

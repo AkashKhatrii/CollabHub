@@ -1,13 +1,15 @@
   
   header{
-    background-color: #f0f0f0;
+    /* background-color: #f0f0f0; */
+    background-color: #333;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 1rem 2rem;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
-    box-shadow: 5px 5px 10px #c7c7c7, -5px -5px 10px #ffffff;
+    /* box-shadow: 5px 5px 10px #c7c7c7, -5px -5px 10px #ffffff; */
+    box-shadow: 5px 5px 10px #1a1a1a, -5px -5px 10px #3f3f3f;
     margin: 1rem 1rem;
     z-index: 10;
     box-sizing: border-box;
@@ -17,7 +19,8 @@
     font-size: 1.5rem;
     font-weight: bold;
     margin: 0;
-    color: #333;
+    /* color: #333; */
+    color: #fff;
   }
   
   .header-nav nav {
@@ -39,7 +42,8 @@
   }
   
   .header-links li a {
-    color: #333;
+    /* color: #333; */
+    color: #fff;
     text-decoration: none;
     font-weight: 500;
     transition: color 0.3s ease;
@@ -77,9 +81,13 @@
     text-align: center;
   }
 
+  .header-links li{
+    margin: 0.3rem 0;
+  }
+
   .header-links li a{
     width: 100%;
-    padding: 1rem 0;
+    padding: 1rem;
   }
 
   .header-logo{
@@ -92,7 +100,8 @@
   .menu-toggle{
     font-size: 1.5rem;
     cursor: pointer;
-    color: #333;
+    /* color: #333; */
+    color: #fff;
     display: block;
   }
 }

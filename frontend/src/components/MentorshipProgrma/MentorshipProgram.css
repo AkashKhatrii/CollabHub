@@ -3,8 +3,10 @@
     /* text-align: center; */
     margin: 1rem;
     border-radius: 8px;
-    background-color: #fff;
-    box-shadow: 5px 5px 10px #c7c7c7, -5px -5px 10px #ffffff;
+    /* background-color: #fff; */
+    background-color: #2f2f2f;
+    /* box-shadow: 5px 5px 10px #c7c7c7, -5px -5px 10px #ffffff; */
+    box-shadow: 5px 5px 10px #333333, -5px -5px 10px #3f3f3f;
   }
 
   .mentorship-program-section-wrapper{
@@ -55,6 +57,7 @@
   .mentorship-program-section-wrapper .content p{
     text-align: start;
     font-size: 1.2rem;
+    color: #fff;
   }
 
   /* .mentorship-titles {
@@ -83,12 +86,14 @@
   .mentorship-icon {
     margin-right: 10px;
     font-size: 1.25rem;
-    color: #333;
+    /* color: #333; */
+    color: #FF5722;
   }
   
   .mentorship-title {
     font-size: 1.5rem;
-    color: #333;
+    /* color: #333; */
+    color: #fff;
     font-family: 'Roboto', sans-serif;
   }
 
@@ -107,7 +112,8 @@
     transition: max-height 0.9s ease, padding 0.3s ease;
     padding: 0 10px;
     font-size: 1rem;
-    color: #333;
+    /* color: #333; */
+    color: #fff;
     margin-left: 1.3rem;
   }
   
@@ -127,7 +133,9 @@
     max-height: 100%;
     width: 100%;
     border-radius: 12px;
-    box-shadow: 5px 5px 10px #c7c7c7, -5px -5px 10px #ffffff;
+    /* box-shadow: 5px 5px 10px #c7c7c7, -5px -5px 10px #ffffff; */
+    box-shadow: 5px 5px 10px #333333, -5px -5px 10px #3f3f3f;
+
   }
   
 
