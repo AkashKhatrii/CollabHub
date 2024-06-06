@@ -2,7 +2,7 @@ import Testimonial from "../Testimonial/Testimonial";
 import './Testimonials.css'
 export default function Testimonials(){
     return(
-        <section className="testimonial-section">
+        <section id="testimonials" className="testimonial-section">
             <div className="testimonial-section-wrapper">
             <div className="testimonials-heading">
             <h2>Testimonials</h2>

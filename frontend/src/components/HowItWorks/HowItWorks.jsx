@@ -40,6 +40,7 @@ export default function HowItWorks() {
   return (
     <section className="how-it-works-section">
       <h2>How It Works</h2>
+      <p>Follow these simple steps to start collaborating and achieve your goals with CollabMate.</p>
       <div className="steps-container">
         {steps.map((step, index) => (
           <div key={index} className="step">

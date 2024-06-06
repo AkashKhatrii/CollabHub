@@ -28,12 +28,23 @@
     gap: 3rem;
 }
 
+.testimonials-heading{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .testimonials-heading > h2{
     margin: 0;
     color: #FF5722; 
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-bottom: 1rem;
 }
 
+.testimonials-heading p{
+    margin-bottom: 2rem;
+}
 @media only screen and (max-width: 600px){
     .testimonials-heading > h2{
         font-size: 1.4rem;

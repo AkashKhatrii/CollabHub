@@ -52,8 +52,8 @@ export default function Features(){
         <section id="features" className="features-section">
             <div className="features-section-wrapper">
                     <div className="features-heading">
-                    <h2>Features</h2>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
+                    <h2>Key Features</h2>
+                    <p>Explore the tools that connect, support, and empower your projects.</p>
                     </div>
                 
                 <div className="features-info">

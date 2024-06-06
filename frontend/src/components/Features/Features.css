@@ -19,15 +19,21 @@
     
 }
 
+.features-heading{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 .features-heading > h2{
     margin: 0;
     font-size: 1.8rem; 
     color: #FF5722; 
-    
 }
 
 .features-heading > p {
-    font-size: 1rem; /* Added this to style the paragraph under the heading */
+    width: 60%;
+    font-size: 1.25rem; /* Added this to style the paragraph under the heading */
     color: #777; /* Light grey color for paragraph */
     margin: 1rem 0; /* Added margin for spacing */
 }
@@ -36,7 +42,7 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    padding: 1rem;
+    padding: 0.8rem;
     flex-wrap: wrap;
     
 }
