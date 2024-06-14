@@ -15,10 +15,10 @@ export default function Features(){
             title: "Project Discovery",
             description: "Explore a wide range of projects posted by other students. Find inspiring ideas, join ongoing projects, or start your own project and invite others to join."
         },
-        {
-            title: "Real-time Collaboration",
-            description: "Collaborate with team members in real-time using CollabMate's built-in chat and collaboration tools. Stay connected, share ideas, and work together seamlessly."
-        },
+        // {
+        //     title: "Real-time Collaboration",
+        //     description: "Collaborate with team members in real-time using CollabMate's built-in chat and collaboration tools. Stay connected, share ideas, and work together seamlessly."
+        // },
         {
             title: "Profile Customization",
             description: "Customize your profile to showcase your skills, interests, and projects. Your profile helps others learn more about you and your contributions to the community."
@@ -27,10 +27,10 @@ export default function Features(){
             title: "Notifications",
             description: "Stay informed about project updates, new collaboration opportunities, and messages from other users with CollabMate's notification system. Never miss an important update."
         },
-        {
-            title: "Project Management",
-            description: "Manage your projects effectively with CollabMate's project management tools. Organize tasks, set deadlines, and track progress to ensure successful project completion."
-        },
+        // {
+        //     title: "Project Management",
+        //     description: "Manage your projects effectively with CollabMate's project management tools. Organize tasks, set deadlines, and track progress to ensure successful project completion."
+        // },
         {
             title: "Feedback and Ratings",
             description: "Provide feedback and ratings for your collaborators based on your experience working with them. Build a reputation within the community and find reliable partners for future projects."
@@ -45,8 +45,8 @@ export default function Features(){
         }
     ];
 
-    const leftFeatures = features.slice(0, 5);
-    const rightFeatures = features.slice(5);
+    const leftFeatures = features.slice(0, features.length / 2);
+    const rightFeatures = features.slice(features.length / 2);
 
     return(
         <section id="features" className="features-section">

@@ -6,7 +6,7 @@
     /* background-color: #f0f0f0; */
     background-color: #333;
     /* box-shadow: 5px 5px 10px #c7c7c7, -5px -5px 10px #ffffff; */
-    box-shadow: 5px 5px 10px #1a1a1a, -5px -5px 10px #3f3f3f;
+    /* box-shadow: 5px 5px 10px #1a1a1a, -5px -5px 10px #3f3f3f; */
     background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6) ), url('/images/collaboration.jpg');
     background-position: center; 
     background-repeat: no-repeat; 

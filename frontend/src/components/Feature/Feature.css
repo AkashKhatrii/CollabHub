@@ -2,9 +2,11 @@
     padding: 10px;
     display: flex;
     flex-direction: column;
-    /* background-color: #e0e0e0; */
-    background-color: #555;
-    /* border-bottom: 1px solid #ddd; */
+    /* background-color: #e0e0e0; light mode */ 
+    /* background-color: #555; dark mode */
+    /* border-bottom: 1px solid #ddd; light mode */
+
+    background-color: rgba(60, 60, 60, 1);
     width: 70%;
     transition: height 0.5s ease-out;
     overflow: hidden; /* Hide overflow content */
