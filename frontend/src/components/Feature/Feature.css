@@ -30,6 +30,9 @@
 
 .top h3{
     color: #fff;
+    margin: 0;
+    font-size: 1.5rem;
+    font-family: 'Poppins';
 }
 /* .top h3 {
     font-size: 1.25em;
