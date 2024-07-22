@@ -1,0 +1,114 @@
+.dashboard-section {
+padding: 4rem 2rem;
+margin: 1rem;
+border-radius: 8px;
+background-color: rgb(40, 40, 40);
+}
+
+.dashboard-header {
+text-align: center;
+margin-bottom: 2rem;
+}
+
+.dashboard-header h1 {
+font-size: 2rem;
+color: #FF5722;
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+margin-bottom: 1.5rem;
+}
+
+.projects-section, .tech-stack-section, .connections-mentorships-section {
+margin-bottom: 2rem;
+padding: 2rem;
+border-radius: 8px;
+background-color: rgb(60, 60, 60);
+}
+
+.projects-section h2, .tech-stack-section h2, .connections-mentorships-section h2 {
+color: #FF5722;
+font-size: 1.5rem;
+margin-bottom: 1rem;
+}
+
+.projects-container, .tech-stack-container, .connections-container, .mentorships-container {
+margin-top: 1rem;
+}
+
+.projects-container{
+    display: flex;
+    gap: 3rem;
+    flex-wrap: wrap;
+
+}
+
+.project-card {
+padding: 1rem 0;
+border-radius: 8px;
+background-color: rgba(60, 60, 60, 1);
+margin-bottom: 1rem;
+color: white;
+display: flex;
+flex-direction: column;
+gap: 0.5rem;
+}
+
+.project-card h3 {
+font-size: 1.2rem;
+color: #FF5722;
+}
+
+.project-card p {
+font-size: 1rem;
+}
+
+.project-card a {
+color: #FF5722;
+text-decoration: none;
+}
+
+.project-card a:hover {
+text-decoration: underline;
+}
+
+.tech-stack-container {
+display: flex;
+flex-wrap: wrap;
+gap: 0.5rem;
+}
+
+.tech-item {
+background-color: #FF5722;
+color: #fff;
+padding: 0.5rem 1rem;
+border-radius: 8px;
+margin: 0.5rem 0;
+}
+
+.connections-container ul, .mentorships-container ul {
+list-style: none;
+padding: 0;
+margin: 0;
+}
+
+.connections-container li, .mentorships-container li {
+background-color: rgba(60, 60, 60, 1);
+color: white;
+padding: 0.5rem 1rem;
+border-radius: 8px;
+margin-bottom: 0.5rem;
+}
+
+.dashboard-section button {
+padding: 0.75rem 1.5rem;
+font-size: 1rem;
+color: #fff;
+background-color: #FF5722;
+border: none;
+border-radius: 8px;
+cursor: pointer;
+transition: background-color 0.3s ease, transform 0.2s;
+}
+
+.dashboard-section button:hover {
+background-color: #E64A19;
+}

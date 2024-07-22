@@ -12,11 +12,19 @@ import Contact from './components/Contact/Contact'
 import HowItWorks from './components/HowItWorks/HowItWorks'
 import Loader from './components/Loader/Loader'
 import MentorshipProgram from './components/MentorshipProgrma/MentorshipProgram'
-
+import ProfileForm from './components/ProfileForm/ProfileForm'
+import ProfileSummary from './components/ProfileSummary/ProfileSummary'
+import UserDashboard from './components/UserDashboard/UserDashboard'
+import Discover from './components/Discover/Discover'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Home from './pages/Home/Home'
+import Profile from './pages/Profile/Profile'
+import DiscoverPage from './pages/Discover/DiscoverPage'
+import Dashboard from './pages/Dashboard/Dashboard'
 
 function App() {
 
-  const [loading, setIsLoading] = useState(true);
+  const [loading, setIsLoading] = useState(false);
 
   useEffect(() => {
     setTimeout(() => {
@@ -36,15 +44,17 @@ function App() {
   
   { !loading && 
   (
-    <>
-  <Header/>
-  <About/>
-  <Features/>
-  <HowItWorks/>
-  <MentorshipProgram/>
-  <Testimonials/>
-  <Contact/>
-  </>
+    <Router>
+      <div className="App">
+        <Header/>
+        <Routes>
+          <Route exact path="/" element={<Home/>} />
+          <Route path="/profile" element={<Profile/>} />
+          <Route path="/dashboard" element={<Dashboard/>} />
+          <Route path="/discover" element={<DiscoverPage/>} />
+        </Routes>
+      </div>
+    </Router>
   )
   
   }
