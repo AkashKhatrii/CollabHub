@@ -21,6 +21,7 @@ import Home from './pages/Home/Home'
 import Profile from './pages/Profile/Profile'
 import DiscoverPage from './pages/Discover/DiscoverPage'
 import Dashboard from './pages/Dashboard/Dashboard'
+import RegisterForm from './components/RegisterForm/RegisterForm'
 
 function App() {
 
@@ -52,6 +53,7 @@ function App() {
           <Route path="/profile" element={<Profile/>} />
           <Route path="/dashboard" element={<Dashboard/>} />
           <Route path="/discover" element={<DiscoverPage/>} />
+          <Route path='/register' element={<RegisterForm/>}/>
         </Routes>
       </div>
     </Router>

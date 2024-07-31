@@ -68,7 +68,7 @@
 }
 .bottom p {
     margin: 0;
-    font-size: 1em;
+    font-size: 1rem;
     text-align: left;
     /* line-height: 1.5; */
     /* color: #333;  */
@@ -83,5 +83,9 @@
         margin: 1rem 0;
         width: 100%;
 
+    }
+
+    .bottom p{
+        font-size: 0.8rem;
     }
 }

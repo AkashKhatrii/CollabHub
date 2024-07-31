@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import './ProfileForm.css';
 
 export default function ProfileForm() {
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('');
+  const [github, setGithub] = useState('');
   const [skills, setSkills] = useState([]);
   const [interests, setInterests] = useState([]);
   const [skillInput, setSkillInput] = useState('');
@@ -31,6 +34,21 @@ export default function ProfileForm() {
     setInterests(interests.filter((_, i) => i !== index));
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const formData = new FormData();
+    formData.append('name', name);
+    formData.append('email', email);
+    formData.append('github', github);
+    formData.append('skills', JSON.stringify(skills));
+    formData.append('interests', JSON.stringify(interests));
+
+    for (let [key, value] of formData.entries()) {
+      console.log(`${key}: ${value}`);
+    }
+  }
+
   return (
     <section className="profile-form-section">
       <h2>Complete Your Profile</h2>
@@ -38,11 +56,11 @@ export default function ProfileForm() {
         <div className="form-row">
           <div className="form-group">
             <label htmlFor="name">Name</label>
-            <input type="text" id="name" />
+            <input type="text" id="name" value={name} onChange={(e) => setName(e.target.value)} />
           </div>
           <div className="form-group">
             <label htmlFor="email">Email</label>
-            <input type="email" id="email" />
+            <input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
           </div>
         </div>
         <div className="form-row">
@@ -96,7 +114,7 @@ export default function ProfileForm() {
             <input type="text" id="github" />
           </div>
         </div>
-        <button type="submit" id='submit-button'>Submit</button>
+        <button type="submit" id='submit-button' onClick={handleSubmit}>Submit</button>
       </form>
     </section>
   );

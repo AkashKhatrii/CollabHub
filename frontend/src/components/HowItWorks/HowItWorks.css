@@ -98,14 +98,14 @@
     border-radius: 10px;
     cursor: pointer;
     /* box-shadow: 5px 5px 10px #c7c7c7, -5px -5px 10px #ffffff; */
-    box-shadow: 5px 5px 10px #1a1a1a, -3px -3px 6px #4d4d4d; /* Neumorphism effect */
+    /* box-shadow: 5px 5px 10px #1a1a1a, -3px -3px 6px #4d4d4d; */
     transition: background-color 0.3s;
   }
   
   .cta button:hover {
     /* background-color: #555; */
-    background-color: #FF5722;
-  }
+    opacity: 0.9;
+    }
   
 
   @media only screen and (max-width: 600px){
