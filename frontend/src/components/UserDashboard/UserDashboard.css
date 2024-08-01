@@ -1,27 +1,35 @@
 .dashboard-section {
-padding: 4rem 2rem;
-margin: 1rem;
+padding:0 1rem;
+/* margin: 1rem; */
 border-radius: 8px;
-background-color: rgb(40, 40, 40);
+/* background-color: rgb(40, 40, 40); */
+background-color: #fff;
 }
 
 .dashboard-header {
 text-align: center;
+margin: 0;
 margin-bottom: 2rem;
+box-shadow: none;
+display: flex;
+justify-content: center;
+align-items: center;
+background-color: #fff;
 }
 
 .dashboard-header h1 {
 font-size: 2rem;
 color: #FF5722;
 font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-margin-bottom: 1.5rem;
+text-align: center;
 }
 
 .projects-section, .tech-stack-section, .connections-mentorships-section {
 margin-bottom: 2rem;
 padding: 2rem;
 border-radius: 8px;
-background-color: rgb(60, 60, 60);
+/* background-color: rgb(60, 60, 60); */
+background-color: #f0f0f0;
 }
 
 .projects-section h2, .tech-stack-section h2, .connections-mentorships-section h2 {
@@ -42,11 +50,12 @@ margin-top: 1rem;
 }
 
 .project-card {
-padding: 1rem 0;
+padding: 1rem;
 border-radius: 8px;
-background-color: rgba(60, 60, 60, 1);
+/* background-color: rgba(60, 60, 60, 1); */
+background-color: #fff;
 margin-bottom: 1rem;
-color: white;
+color: #333;
 display: flex;
 flex-direction: column;
 gap: 0.5rem;
@@ -91,8 +100,8 @@ margin: 0;
 }
 
 .connections-container li, .mentorships-container li {
-background-color: rgba(60, 60, 60, 1);
-color: white;
+/* background-color: rgba(60, 60, 60, 1); */
+color: #333;
 padding: 0.5rem 1rem;
 border-radius: 8px;
 margin-bottom: 0.5rem;

@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import './ProfileForm.css';
 
-export default function ProfileForm() {
+export default function ProfileForm({ userName, userEmail }) {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('');
   const [github, setGithub] = useState('');
@@ -9,6 +10,30 @@ export default function ProfileForm() {
   const [interests, setInterests] = useState([]);
   const [skillInput, setSkillInput] = useState('');
   const [interestInput, setInterestInput] = useState('');
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  const fetchUserProfile = async () => {
+    console.log('fetching user profile');
+    try {
+        const token = localStorage.getItem('token');
+        const response = await axios.get('http://localhost:3000/api/auth/profile', {
+            headers: { 'Authorization': `Bearer ${token}` }
+        });
+        console.log(response);
+        setGithub(response.data.github || '');
+        setSkills(response.data.skills || []);
+        setInterests(response.data.interests || []);
+    } catch (err) {
+        setError(err.message); // Handle error
+    } finally {
+        setLoading(false); // Stop loading indicator
+    }
+};
+
+  useEffect(() => {
+      fetchUserProfile();
+  }, [])
 
   const handleSkillKeyDown = (e) => {
     if (e.key === 'Enter' && skillInput.trim()) {
@@ -34,19 +59,21 @@ export default function ProfileForm() {
     setInterests(interests.filter((_, i) => i !== index));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-
-    const formData = new FormData();
-    formData.append('name', name);
-    formData.append('email', email);
-    formData.append('github', github);
-    formData.append('skills', JSON.stringify(skills));
-    formData.append('interests', JSON.stringify(interests));
-
-    for (let [key, value] of formData.entries()) {
-      console.log(`${key}: ${value}`);
-    }
+    console.log('Inside form', github)
+    try {
+      const token = localStorage.getItem('token');
+      const response = await axios.post(
+          'http://localhost:3000/api/auth/completeProfile',
+          { github, skills, interests },
+          {headers: {'Authorization': `Bearer ${token}`}}
+    
+      );
+      console.log(response.data); // Handle success response
+  } catch (error) {
+      console.error(error); // Handle error response
+  }
   }
 
   return (
@@ -56,11 +83,11 @@ export default function ProfileForm() {
         <div className="form-row">
           <div className="form-group">
             <label htmlFor="name">Name</label>
-            <input type="text" id="name" value={name} onChange={(e) => setName(e.target.value)} />
+            <input type="text" id="name" value={userName} onChange={(e) => setName(e.target.value)} disabled/>
           </div>
           <div className="form-group">
             <label htmlFor="email">Email</label>
-            <input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
+            <input type="email" id="email" value={userEmail} onChange={(e) => setEmail(e.target.value)} disabled/>
           </div>
         </div>
         <div className="form-row">
@@ -111,7 +138,7 @@ export default function ProfileForm() {
 
           <div className="form-group">
             <label htmlFor="github">Github</label>
-            <input type="text" id="github" />
+            <input type="text" id="github" value={github} onChange={(e) => setGithub(e.target.value)} />
           </div>
         </div>
         <button type="submit" id='submit-button' onClick={handleSubmit}>Submit</button>

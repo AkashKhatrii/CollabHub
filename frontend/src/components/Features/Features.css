@@ -3,10 +3,9 @@
     text-align: center;
     margin: 1rem;
     border-radius: 8px;
-    /* background-color: #f0f0f0; */
-    background-color: rgb(40, 40, 40);
-    /* box-shadow: 5px 5px 10px #c7c7c7, -5px -5px 10px #ffffff; */
-    /* box-shadow: 5px 5px 10px #1a1a1a, -5px -5px 10px #3f3f3f; */
+    background-color: #fff;
+    /* background-color: rgb(40, 40, 40); */
+    box-shadow: 5px 5px 10px #c7c7c7, -5px -5px 10px #ffffff; 
 }
 
 .features-section-wrapper{
@@ -33,9 +32,9 @@
 
 .features-heading > p {
     width: 60%;
-    font-size: 1.25rem; /* Added this to style the paragraph under the heading */
+    font-size: 1.15rem; /* Added this to style the paragraph under the heading */
     /* color: #777; */
-    color: white;
+    color: #000;
     margin: 1rem 0; /* Added margin for spacing */
 }
 
@@ -69,4 +68,7 @@
         width: 100%;
     }
     
+    .features-heading p{
+        font-size: 1rem;
+    }
 }

@@ -12,7 +12,8 @@ export default function RegisterForm() {
         e.preventDefault();
 
         try {
-            await axios.post('http://localhost:3000/api/auth/register', { name, email, password });
+            const response = await axios.post('http://localhost:3000/api/auth/register', { name, email, password });
+            localStorage.setItem('token', response.data.token);
             alert('Registration successful. Please log in.');
             navigate('/'); // Redirect to login page after successful registration
         } catch (error) {

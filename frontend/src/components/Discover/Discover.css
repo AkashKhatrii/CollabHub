@@ -1,9 +1,12 @@
 .discover-section {
     padding: 4rem 2rem;
-    background-color: rgb(40, 40, 40);
+    /* background-color: rgb(40, 40, 40); */
+    background-color: #fff;
     color: white;
     border-radius: 8px;
     margin: 1rem;
+    /* box-shadow: 5px 5px 10px #c7c7c7, -5px -5px 10px #ffffff;  */
+
   }
   
   .discover-section h2 {
@@ -27,8 +30,10 @@
     border: none;
     border-radius: 8px;
     width: 50%;
-    background-color: rgba(60, 60, 60, 1);
-    color: white;
+    /* background-color: rgba(60, 60, 60, 1); */
+    background-color: #f0f0f0;
+    /* color: white; */
+    color: #333;
   }
   
   .search-bar button {
@@ -54,12 +59,14 @@
   }
   
   .profile-card {
-    background-color: rgba(60, 60, 60, 1);
+    /* background-color: rgba(60, 60, 60, 1); */
+    background-color: #f0f0f0;
     border-radius: 8px;
     padding: 1.5rem;
     width: 300px;
     text-align: center;
-    color: white;
+    /* color: white; */
+    color: #333;
   }
   
   .profile-card img {
