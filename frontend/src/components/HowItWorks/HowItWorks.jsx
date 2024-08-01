@@ -7,7 +7,7 @@ export default function HowItWorks() {
   const steps = [
     {
       icon: faUserPlus,
-      title: 'Sign Up / Create an Account',
+      title: 'Create an Account',
       description: 'Register for a free account to get started with CollabMate.'
     },
     {

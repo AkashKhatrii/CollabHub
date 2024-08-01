@@ -81,9 +81,13 @@
   .mentorship-title-container {
     display: flex;
     align-items: center;
+    justify-content: center;
     margin-bottom: 1rem;
   }
   
+  .mentorship-title-container h3{
+    margin-bottom: 0;
+  }
   .mentorship-icon {
     margin-right: 10px;
     font-size: 1.25rem;
