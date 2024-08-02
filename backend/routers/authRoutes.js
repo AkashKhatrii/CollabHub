@@ -3,9 +3,11 @@ const { registerUser, loginUser, getUser } = require('../controllers/authControl
 const authMiddleware = require('../middlewares/authMiddleware');
 const UserProfile = require('../models/UserProfile');
 const User = require('../models/User')
+const Technology = require('../models/Technology');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const { ObjectId } = require('mongodb');
+const Project = require('../models/Project');
 const router = express.Router();
 
 router.post('/register', async (req, res) => {
@@ -159,7 +161,93 @@ router.get('/profile', authMiddleware, async (req, res) => {
     }
 });
 
+router.post('/addTechnologies', authMiddleware, async (req, res) => {
+    const userId = req.user.id;
+  const technologies = req.body.technologies;
 
+  try {
+    const user = await User.findById(userId);
+
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    const updatedTechnologies = [];
+    
+    for (let tech of technologies) {
+      // Check if the technology already exists
+      const existingTech = await Technology.findOne({ user: userId, name: tech.name });
+
+      if (existingTech) {
+        // Update the existing technology's proficiency
+        existingTech.proficiency = tech.proficiency;
+        await existingTech.save();
+        updatedTechnologies.push(existingTech);
+      } else {
+        // Add the new technology
+        const newTech = new Technology({
+          user: userId,
+          name: tech.name,
+          proficiency: tech.proficiency,
+        });
+        await newTech.save();
+        updatedTechnologies.push(newTech);
+      }
+    }
+
+    res.json(updatedTechnologies);
+  } catch (err) {
+    console.error('Error in /technologies route:', err.message);
+    res.status(500).send('Server error');
+  }
+})
+
+router.get('/technologies', authMiddleware, async (req, res) => {
+    const userId = req.user.id;
+
+    try{
+        const technologies = await Technology.find({ user: userId });
+        res.json({ technologies })
+    }catch(error){
+        console.error('Error fetching technologies:', error.message);
+        res.status(500).json({ message: 'Server error' });
+    }
+})
+
+router.post('/addProjects', authMiddleware, async (req, res) => {
+    const userId = req.user.id;
+    const projects = req.body.projects;
+
+    try{
+
+        if (!Array.isArray(projects) || projects.length === 0) {
+            return res.status(400).json({ message: 'No projects provided' });
+          }
+
+        const projectsUser = projects.map(project => ({
+            ...project,
+            user: userId
+        }));
+
+        await Project.insertMany(projectsUser);
+        res.status(201).json({message: 'projects saved successfully'});
+    }catch(err){
+        console.error('Error in /projects route:', err.message);
+    res.status(500).json({ message: 'Server error' });
+    }
+})
+
+router.get('/projects', authMiddleware, async (req, res) => {
+    const userId = req.user.id;
+    try{
+        const projects = await Project.find({ user: userId });
+        console.log(projects)
+        res.json({ projects });
+    }catch(error){
+        console.error('Error fetching projects:', error.message);
+        res.status(500).json({ message: 'Server error' });
+    }
+})
 router.get('/test', (req, res) => {
     res.send('auth test')
 })

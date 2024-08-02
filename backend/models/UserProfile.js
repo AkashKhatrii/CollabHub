@@ -17,7 +17,15 @@ const ProfileSchema = new mongoose.Schema({
     },
     interests: {
         type: [String], // Array of interests
-    }
+    },
+    projects: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Project',
+    }],
+    technologies: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Technology',
+    }]
 });
 
 module.exports = mongoose.model('UserProfile', ProfileSchema);
