@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { useRecoilState } from 'recoil';
+import { authState } from '../../recoil/authState';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+
+  const [auth, setAuth] = useRecoilState(authState);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -19,6 +23,7 @@ const Login = () => {
 
       const { token } = response.data;
       localStorage.setItem('token', token);
+      setAuth({ isAuthenticated: true, token})
       navigate('/'); // Redirect to dashboard or any other page after login
     } catch (err) {
       setError('Invalid credentials. Please try again.');

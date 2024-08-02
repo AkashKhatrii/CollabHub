@@ -4,6 +4,8 @@ import ProfileSummary from "../../components/ProfileSummary/ProfileSummary";
 import { useState, useEffect } from "react";
 import { jwtDecode } from 'jwt-decode';
 import axios from 'axios';
+import ProjectsForm from "../../components/ProjectsForm/ProjectsForm";
+import TechnologiesUsed from "../../components/TechnologiesUsed/TechnologiesUsed";
 
 export default function Profile(){
     const [userName, setUserName] = useState(null);
@@ -48,7 +50,9 @@ export default function Profile(){
     return (
         <>
             <ProfileForm userName = {userName} userEmail = {email}/>
-            <ProfileSummary/>
+            {/* <ProfileSummary/> */}
+            <ProjectsForm/>
+            <TechnologiesUsed/>
         </>
     )
 }
