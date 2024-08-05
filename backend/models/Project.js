@@ -16,7 +16,6 @@ const projectSchema = new Schema({
     },
     github: {
         type: String,
-        required: true
     },
     user: {
         type: Schema.Types.ObjectId,

@@ -23,16 +23,30 @@ import DiscoverPage from './pages/Discover/DiscoverPage'
 import Dashboard from './pages/Dashboard/Dashboard'
 import RegisterForm from './components/RegisterForm/RegisterForm'
 import Login from './components/Login/Login'
-
+import { useSetRecoilState } from 'recoil'
+import { authState } from './recoil/authState'
+import axios from 'axios'
 function App() {
 
   const [loading, setIsLoading] = useState(false);
+  const setAuth = useSetRecoilState(authState);
+
+
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     setIsLoading(false)
+  //   },3000 )
+  // }, [])
 
   useEffect(() => {
-    setTimeout(() => {
-      setIsLoading(false)
-    },3000 )
-  }, [])
+    const token = localStorage.getItem('token');
+    if (token) {
+      // Optionally, you can verify the token with a backend endpoint to ensure it's valid
+      axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+      setAuth({ token, isAuthenticated: true });
+    }
+  }, [setAuth]);
+
 
  return (
   <>

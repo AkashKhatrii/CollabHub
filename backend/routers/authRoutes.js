@@ -175,16 +175,13 @@ router.post('/addTechnologies', authMiddleware, async (req, res) => {
     const updatedTechnologies = [];
     
     for (let tech of technologies) {
-      // Check if the technology already exists
       const existingTech = await Technology.findOne({ user: userId, name: tech.name });
 
       if (existingTech) {
-        // Update the existing technology's proficiency
         existingTech.proficiency = tech.proficiency;
         await existingTech.save();
         updatedTechnologies.push(existingTech);
       } else {
-        // Add the new technology
         const newTech = new Technology({
           user: userId,
           name: tech.name,
@@ -246,6 +243,35 @@ router.get('/projects', authMiddleware, async (req, res) => {
     }catch(error){
         console.error('Error fetching projects:', error.message);
         res.status(500).json({ message: 'Server error' });
+    }
+})
+
+router.get('/discover', authMiddleware, async (req, res) => {
+    const { techName } = req.query;
+    console.log("Inside discover")
+
+    try{
+        const technologies = await Technology.find({
+            name: { $regex: new RegExp(`^${techName}$`, 'i') }
+        }).populate('user', 'name email');
+
+        const users = [];
+        for (const tech of technologies) {
+            const user = tech.user.toObject(); // Convert Mongoose document to plain object
+            user.technologies = [];
+            users.push(user);
+        }
+
+        // Fetch all technologies for each user and attach them to the user object
+        for (const user of users) {
+            const userTechnologies = await Technology.find({ user: user._id });
+            user.technologies = userTechnologies.map(tech => tech.name);
+        }
+
+        res.status(200).json(users);
+
+    }catch(error){
+        res.status(500).json({ message: 'Error fetching users ', error});
     }
 })
 router.get('/test', (req, res) => {

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './Discover.css';
+import axios from 'axios';
 
 const mockProfiles = [
   {
@@ -19,14 +20,23 @@ const mockProfiles = [
 
 export default function Discover() {
   const [searchTech, setSearchTech] = useState('');
-  const [filteredProfiles, setFilteredProfiles] = useState(mockProfiles);
+  const [filteredProfiles, setFilteredProfiles] = useState([]);
+  const [error, setError] = useState('');
 
-  const handleSearch = () => {
-    const filtered = mockProfiles.filter(profile =>
-      profile.technologies.some(tech => tech.toLowerCase().includes(searchTech.toLowerCase()))
-    );
-    setFilteredProfiles(filtered);
-  };
+  const handleSearch = async () => {
+    
+    try{
+      const response= await axios.get("http://localhost:3000/api/auth/discover", {
+        params: { techName: searchTech.toLowerCase() }
+      })
+      const profiles = response.data; 
+      setFilteredProfiles(response.data);
+      console.log(filteredProfiles)
+    }catch(error){
+      setError('Error fetching users. Please try again.');
+      console.error(error.message);
+    }
+};
 
   return (
     <section className="discover-section">
@@ -41,7 +51,7 @@ export default function Discover() {
         <button onClick={handleSearch}>Search</button>
       </div>
       <div className="profile-cards-container">
-        {filteredProfiles.map((profile, index) => (
+        {filteredProfiles ? filteredProfiles.map((profile, index) => (
           <div key={index} className="profile-card">
             <img src={profile.profilePicture} alt={`${profile.name}'s profile`} />
             <h3>{profile.name}</h3>
@@ -52,7 +62,7 @@ export default function Discover() {
               ))}
             </div>
           </div>
-        ))}
+        )) : null}
       </div>
     </section>
   );

@@ -1,0 +1,65 @@
+.register-form-section {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+  }
+  
+  .register-form-section h2 {
+    text-align: center;
+    margin-bottom: 1rem;
+    color: #333;
+  }
+  
+  .register-form-section form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .register-form-section .form-group {
+    margin-bottom: 1rem;
+  }
+  
+  .register-form-section label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    color: #555;
+  }
+  
+  .register-form-section input[type="text"],
+  .register-form-section input[type="email"],
+  .register-form-section input[type="password"] {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+  }
+  
+  .register-form-section input[type="text"]:focus,
+  .register-form-section input[type="email"]:focus,
+  .register-form-section input[type="password"]:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+  
+  .register-form-section button {
+    padding: 1rem;
+    font-size: 1.15rem;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .register-form-section button:hover {
+    background-color: #0056b3;
+  }
+  

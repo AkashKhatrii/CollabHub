@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import './RegisterForm.css';
 
 export default function RegisterForm() {
     const [name, setName] = useState('');
@@ -15,7 +16,7 @@ export default function RegisterForm() {
             const response = await axios.post('http://localhost:3000/api/auth/register', { name, email, password });
             localStorage.setItem('token', response.data.token);
             alert('Registration successful. Please log in.');
-            navigate('/'); // Redirect to login page after successful registration
+            navigate('/');
         } catch (error) {
             console.error('Registration error:', error);
             alert('Error registering. Please try again.');
@@ -26,7 +27,7 @@ export default function RegisterForm() {
         <section className="register-form-section">
             <h2>Register</h2>
             <form onSubmit={handleSubmit}>
-                <div>
+                <div className="form-group">
                     <label htmlFor="name">Name</label>
                     <input
                         type="text"
@@ -36,7 +37,7 @@ export default function RegisterForm() {
                         required
                     />
                 </div>
-                <div>
+                <div className="form-group">
                     <label htmlFor="email">Email</label>
                     <input
                         type="email"
@@ -46,7 +47,7 @@ export default function RegisterForm() {
                         required
                     />
                 </div>
-                <div>
+                <div className="form-group">
                     <label htmlFor="password">Password</label>
                     <input
                         type="password"

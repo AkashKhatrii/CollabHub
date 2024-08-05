@@ -101,8 +101,8 @@
   .menu-toggle{
     font-size: 1.5rem;
     cursor: pointer;
-    /* color: #333; */
-    color: #fff;
+    color: #333;
+    /* color: #fff; */
     display: block;
   }
 }
