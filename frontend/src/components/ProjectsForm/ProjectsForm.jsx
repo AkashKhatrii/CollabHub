@@ -16,7 +16,7 @@ export default function ProjectsForm() {
 
   const fetchProjects = async () => {
     try{
-        const response = await axios.get(`${process.env.BACKEND_URL}/api/auth/projects`, {
+        const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/auth/projects`, {
             headers: {
                 'Authorization': `Bearer ${token}`
             }
@@ -50,7 +50,7 @@ export default function ProjectsForm() {
     e.preventDefault();
 
     try{
-        const response = await axios.post(`${process.env.BACKEND_URL}/api/auth/addProjects`, { projects }, {
+        const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/auth/addProjects`, { projects }, {
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${token}`
@@ -117,7 +117,7 @@ export default function ProjectsForm() {
       </form>
 
       <section className="fetched-projects-section">
-        <h2>Your Projects</h2>
+        <h3>Your Projects</h3>
         {fetchedProjects.length > 0 ? (
           <ul>
             {fetchedProjects.map((project, index) => (

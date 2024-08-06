@@ -17,7 +17,10 @@ export default function Discover() {
     
     try{
       const response= await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/auth/discover`, {
-        params: { techName: searchTech.toLowerCase() }
+        params: { techName: searchTech.toLowerCase() },
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
       })
       setFilteredProfiles(response.data);
       setDiscover({ searchTech: searchTech, filteredProfiles: response.data });
