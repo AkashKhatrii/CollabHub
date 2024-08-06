@@ -5,5 +5,6 @@ export const authState = atom({
     default: {
         token: localStorage.getItem('token') || '',
         isAuthenticated: !!localStorage.getItem('token'),
+        loggedInUser: null
     }
 })

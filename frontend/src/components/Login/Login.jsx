@@ -22,9 +22,9 @@ const Login = () => {
         password
       });
 
-      const { token } = response.data;
+      const { token, userId } = response.data;
       localStorage.setItem('token', token);
-      setAuth({ isAuthenticated: true, token})
+      setAuth({ isAuthenticated: true, token, loggedInUser: userId})
       navigate('/'); // Redirect to dashboard or any other page after login
     } catch (err) {
       setError('Invalid credentials. Please try again.');

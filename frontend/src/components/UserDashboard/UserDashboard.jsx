@@ -69,7 +69,7 @@ export default function UserDashboard() {
     }
   }
 
-  const fetTechnologies = async () => {
+  const fetchTechnologies = async () => {
     try {
       const response = await axios.get("http://localhost:3000/api/auth/technologies", {
         headers: {
@@ -84,7 +84,7 @@ export default function UserDashboard() {
   }
   useEffect(() => {
     fetchProjects();
-    fetTechnologies();
+    fetchTechnologies();
   }, [])
   return (
     <section className="dashboard-section">

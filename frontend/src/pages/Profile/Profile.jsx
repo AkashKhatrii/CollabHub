@@ -18,7 +18,6 @@ export default function Profile(){
         const fetchUserData = async () => {
         setLoading(true);
         try {
-            // Get token from local storage
             const token = localStorage.getItem('token');
             if (token) {
             // Decode token to get user ID

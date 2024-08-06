@@ -75,11 +75,14 @@ router.post('/login', async (req, res) => {
           id: user.id,
         },
       };
+
+
   
       // get token after logging in
       jwt.sign(payload, process.env.JWT_SECRET, (err, token) => {
         if (err) throw err;
-        res.json({ token });
+        const userId = user.id;
+        res.json({ token, userId });
       });
     } catch (err) {
       console.error(err.message);
@@ -161,6 +164,27 @@ router.get('/profile', authMiddleware, async (req, res) => {
     }
 });
 
+router.get('/profile/:userId', authMiddleware, async (req, res) => {
+    const userId = req.params.userId;
+    console.log('Inside route /profile/:userId', userId);
+    try{
+        const user = await User.findById(userId)
+        if(!user){
+            res.status(404).json({ msg: 'User not found '});
+        }
+
+        const projects = await Project.find({ user: userId });
+        const technologies = await Technology.find({ user: userId });
+
+        res.json({
+            name: user.name,
+            projects: projects,
+            technologies: technologies
+        });
+    }catch(error){
+        res.status(500).end('Server error');
+    }
+})
 router.post('/addTechnologies', authMiddleware, async (req, res) => {
     const userId = req.user.id;
   const technologies = req.body.technologies;
