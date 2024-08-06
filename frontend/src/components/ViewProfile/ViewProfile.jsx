@@ -16,7 +16,7 @@ export default function ViewProfile() {
 
   const fetchUserDetails = async () => {
     try{
-        const response = await axios.get(`http://localhost:3000/api/auth/profile/${userId}`, {
+        const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/auth/profile/${userId}`, {
           headers: {
             'Authorization': `Bearer ${token}`
           }

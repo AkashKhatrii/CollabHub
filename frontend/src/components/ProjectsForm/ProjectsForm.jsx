@@ -16,7 +16,7 @@ export default function ProjectsForm() {
 
   const fetchProjects = async () => {
     try{
-        const response = await axios.get("http://localhost:3000/api/auth/projects", {
+        const response = await axios.get(`${process.env.BACKEND_URL}/api/auth/projects`, {
             headers: {
                 'Authorization': `Bearer ${token}`
             }
@@ -50,7 +50,7 @@ export default function ProjectsForm() {
     e.preventDefault();
 
     try{
-        const response = await axios.post("http://localhost:3000/api/auth/addProjects", { projects }, {
+        const response = await axios.post(`${process.env.BACKEND_URL}/api/auth/addProjects`, { projects }, {
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${token}`

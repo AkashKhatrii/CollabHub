@@ -17,7 +17,7 @@ export default function ProfileForm({ userName, userEmail }) {
     console.log('fetching user profile');
     try {
         const token = localStorage.getItem('token');
-        const response = await axios.get('http://localhost:3000/api/auth/profile', {
+        const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/auth/profile`, {
             headers: { 'Authorization': `Bearer ${token}` }
         });
         console.log(response);
@@ -45,7 +45,7 @@ export default function ProfileForm({ userName, userEmail }) {
 
   const handleInterestKeyDown = (e) => {
     if (e.key === 'Enter' && interestInput.trim()) {
-      e.preventDefault(); // Prevent form submission
+      e.preventDefault(); 
       setInterests([...interests, interestInput.trim()]);
       setInterestInput('');
     }
@@ -65,7 +65,7 @@ export default function ProfileForm({ userName, userEmail }) {
     try {
       const token = localStorage.getItem('token');
       const response = await axios.post(
-          'http://localhost:3000/api/auth/completeProfile',
+          `${import.meta.env.VITE_BACKEND_URL}/api/auth/completeProfile`,
           { github, skills, interests },
           {headers: {'Authorization': `Bearer ${token}`}}
     
@@ -91,10 +91,10 @@ export default function ProfileForm({ userName, userEmail }) {
           </div>
         </div>
         <div className="form-row">
-          <div className="form-group">
+          {/* <div className="form-group">
             <label htmlFor="profile-picture">Profile Picture</label>
             <input type="file" id="profile-picture" />
-          </div>
+          </div> */}
           <div className="form-group">
             <label htmlFor="skills">Skills</label>
             <input

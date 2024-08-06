@@ -25,7 +25,7 @@ export default function Profile(){
             const userId = decoded.user.id;
 
             // Fetch user data from the backend
-            const response = await axios.get(`http://localhost:3000/api/auth/${userId}`, {
+            const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/auth/${userId}`, {
                 headers: {
                 'Authorization': `Bearer ${token}`,
                 },

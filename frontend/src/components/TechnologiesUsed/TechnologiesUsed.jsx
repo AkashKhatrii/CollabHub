@@ -21,7 +21,7 @@ const { token } = useRecoilValue(authState);
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:3000/api/auth/addTechnologies', 
+      const response = await axios.post(`${process.env.BACKEND_URL}/api/auth/addTechnologies`, 
         { technologies },
         {
           headers: {

@@ -16,7 +16,7 @@ export default function Discover() {
   const handleSearch = async () => {
     
     try{
-      const response= await axios.get("http://localhost:3000/api/auth/discover", {
+      const response= await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/auth/discover`, {
         params: { techName: searchTech.toLowerCase() }
       })
       setFilteredProfiles(response.data);
@@ -56,7 +56,7 @@ useEffect(() => {
         <button onClick={handleSearch}>Search</button>
       </div>
       <div className="profile-cards-container">
-        {filteredProfiles ? filteredProfiles.map((profile, index) => (
+        {filteredProfiles && filteredProfiles.map((profile, index) => (
           <div key={index} className="profile-card">
             <img src='/images/user.png' alt={`${profile.name}'s profile`} />
             <h3 onClick={() => viewProfile(profile._id)}>{profile.name}</h3>
@@ -67,7 +67,7 @@ useEffect(() => {
               ))}
             </div>
           </div>
-        )) : null}
+        ))}
       </div>
     </section>
   );

@@ -5,49 +5,7 @@ import { authState } from '../../recoil/authState';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const projects = [
-  {
-    id: 1,
-    name: 'Project A',
-    org: 'Org A',
-    techStack: ['React', 'Node.js'],
-    status: 'Ongoing',
-    github: 'https://github.com/user/project-a',
-    teamMembers: 5
-  },
-  {
-    id: 2,
-    name: 'Project B',
-    org: 'Org B',
-    techStack: ['Python', 'Django'],
-    status: 'Past',
-    github: 'https://github.com/user/project-b',
-    teamMembers: 3
-  },
-  {
-    id: 3,
-    name: 'Project A',
-    org: 'Org A',
-    techStack: ['React', 'Node.js'],
-    status: 'Ongoing',
-    github: 'https://github.com/user/project-a',
-    teamMembers: 5
-  },
-];
 
-const techStack = [
-  'JavaScript', 'React', 'Node.js', 'MongoDB', 'Python', 'Django'
-];
-
-const connections = [
-  { id: 1, name: 'Alice Smith', role: 'Developer' },
-  { id: 2, name: 'Bob Johnson', role: 'Designer' },
-];
-
-const mentorships = [
-  { id: 1, mentor: 'Dr. John Doe', topic: 'AI and Machine Learning' },
-  { id: 2, mentor: 'Ms. Jane Roe', topic: 'Web Development' },
-];
 
 export default function UserDashboard() {
 
@@ -57,7 +15,7 @@ export default function UserDashboard() {
 
   const fetchProjects = async () => {
     try{
-        const response = await axios.get("http://localhost:3000/api/auth/projects", {
+        const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/auth/projects`, {
             headers: {
                 'Authorization': `Bearer ${token}`
             }
@@ -71,7 +29,7 @@ export default function UserDashboard() {
 
   const fetchTechnologies = async () => {
     try {
-      const response = await axios.get("http://localhost:3000/api/auth/technologies", {
+      const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/auth/technologies`, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -112,8 +70,8 @@ export default function UserDashboard() {
           ))}
         </div>
       </section>
-      <section className="connections-mentorships-section">
-        {/* <h2>Connections and Mentorships</h2> */}
+      {/* <section className="connections-mentorships-section">
+        
         <div className="connections-container">
           <h3>Connections</h3>
           <ul>
@@ -130,7 +88,7 @@ export default function UserDashboard() {
             ))}
           </ul>
         </div>
-      </section>
+      </section> */}
     </section>
   );
 }
