@@ -8,6 +8,6 @@ export default defineConfig({
     host: '0.0.0.0'
   },
   define: {
-    'process.env': {}
+    'process.env.VITE_BACKEND_URL': JSON.stringify(process.env.VITE_BACKEND_URL)
   }
 })
