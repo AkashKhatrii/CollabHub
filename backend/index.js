@@ -12,7 +12,9 @@ const PORT = process.env.PORT || 3000;
 
 connectDB();
 
-app.use(cors())
+app.use(cors({
+    origin: 'https://collab-mate.vercel.app'
+}));
 app.use(express.json())
 
 
