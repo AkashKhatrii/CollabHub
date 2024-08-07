@@ -116,6 +116,32 @@ transition: background-color 0.3s ease, transform 0.2s;
 background-color: #E64A19;
 }
 
+.success-dialog {
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 7px;
+    text-align: center;
+    z-index: 1000;
+    display: flex;
+    gap: 10px;
+  }
+  
+  .success-icon {
+    font-size: 1rem;
+    color: green;
+  }
+  
+  .success-dialog p {
+    margin: 0;
+    font-size: 1rem;
+    color: #333;
+  }
 @media (max-width: 768px) {
 .form-row {
     flex-direction: column;

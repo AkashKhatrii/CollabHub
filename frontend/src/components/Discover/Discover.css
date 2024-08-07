@@ -101,3 +101,17 @@
     border-radius: 8px;
   }
   
+@media (max-width: 500px){
+  .search-bar{
+    flex-direction: column;
+  }
+
+  .search-bar input{
+    width: 100%;
+  }
+
+  .search-bar button{
+    width: 100px;
+    align-self: center;
+  }
+}

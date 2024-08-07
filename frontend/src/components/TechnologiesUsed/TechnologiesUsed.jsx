@@ -3,8 +3,12 @@ import './TechnologiesUsed.css';
 import { useRecoilValue } from 'recoil';
 import { authState } from '../../recoil/authState';
 import axios from 'axios';
+import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 export default function TechnologiesUsed() {
   const [technologies, setTechnologies] = useState([{ name: '', proficiency: '' }]);
+  const [showSuccessDialog, setShowSuccessDialog] = useState(false);
 const { token } = useRecoilValue(authState);
 
 
@@ -30,7 +34,10 @@ const { token } = useRecoilValue(authState);
           },
         }
       );
-      console.log(response.data);
+    setShowSuccessDialog(true);
+    setTimeout(() => {
+    setShowSuccessDialog(false);
+    }, 3000);
     } catch (error) {
       console.error('Error saving technologies:', error);
     }
@@ -53,19 +60,26 @@ const { token } = useRecoilValue(authState);
               />
             </div>
             <div className="form-group">
-              <label htmlFor={`tech-proficiency-${index}`}>Proficiency</label>
+              {/* <label htmlFor={`tech-proficiency-${index}`}>Proficiency</label>
               <input
                 type="text"
                 id={`tech-proficiency-${index}`}
                 value={technology.proficiency}
                 onChange={(e) => handleTechnologyChange(index, 'proficiency', e.target.value)}
-              />
+              /> */}
             </div>
           </div>
         ))}
         <button type="button" onClick={addTechnologyField}>Add Technology</button>
-        <button type="submit" onClick={handleSubmit}>Save Technologies</button>
+        <button type="submit" onClick={handleSubmit}>Save</button>
       </form>
+
+      {showSuccessDialog && (
+        <div className="success-dialog">
+          <FontAwesomeIcon icon={faCheckCircle} className="success-icon" />
+          <p>Technologies saved successfully. Visit Dashboard to see.</p>
+        </div>
+        )}
     </section>
   );
 }

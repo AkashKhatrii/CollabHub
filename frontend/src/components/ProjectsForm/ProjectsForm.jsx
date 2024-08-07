@@ -3,15 +3,18 @@ import './ProjectsForm.css';
 import axios from 'axios';
 import { useRecoilValue } from 'recoil';
 import { authState } from '../../recoil/authState';
-
+import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 export default function ProjectsForm() {
   const [projects, setProjects] = useState([{
     projectName: '',
+    projectDesc: '',
     techStack: '',
-    status: '',
-    github: ''
+    github: '',
+    link: '',
   }]);
   const [fetchedProjects, setFetchedProjects] = useState([]);
+  const [showSuccessDialog, setShowSuccessDialog] = useState(false);
   const { token } = useRecoilValue(authState);
 
   const fetchProjects = async () => {
@@ -40,9 +43,10 @@ export default function ProjectsForm() {
   const addProjectField = () => {
     setProjects([...projects, {
       projectName: '',
+      projectDesc: '',
       techStack: '',
-      status: '',
-      github: ''
+      github: '',
+      link: ''
     }]);
   };
 
@@ -59,10 +63,16 @@ export default function ProjectsForm() {
         console.log(response.data);
         setProjects([{
             projectName: '',
+            projectDesc: '',
             techStack: '',
-            status: '',
-            github: ''
-          }])
+            github: '',
+            link: ''
+          }]);
+
+        setShowSuccessDialog(true);
+        setTimeout(() => {
+        setShowSuccessDialog(false);
+        }, 3000);
     }catch(err){
         console.error('Error saving projects:', err);
     }
@@ -93,16 +103,16 @@ export default function ProjectsForm() {
               />
             </div>
             <div className="form-group">
-              <label htmlFor={`status-${index}`}>Status</label>
+              <label htmlFor={`projectDesc-${index}`}>Description</label>
               <input
                 type="text"
-                id={`status-${index}`}
-                value={project.status}
-                onChange={(e) => handleProjectChange(index, 'status', e.target.value)}
+                id={`projectDesc-${index}`}
+                value={project.projectDesc}
+                onChange={(e) => handleProjectChange(index, 'projectDesc', e.target.value)}
               />
             </div>
             <div className="form-group">
-              <label htmlFor={`github-${index}`}>GitHub</label>
+              <label htmlFor={`github-${index}`}>Github</label>
               <input
                 type="text"
                 id={`github-${index}`}
@@ -110,13 +120,29 @@ export default function ProjectsForm() {
                 onChange={(e) => handleProjectChange(index, 'github', e.target.value)}
               />
             </div>
+            <div className="form-group">
+              <label htmlFor={`link-${index}`}>Link</label>
+              <input
+                type="text"
+                id={`link-${index}`}
+                value={project.link}
+                onChange={(e) => handleProjectChange(index, 'link', e.target.value)}
+              />
+            </div>
           </div>
         ))}
         <button type="button" onClick={addProjectField}>Add Project</button>
-        <button type="submit">Save Projects</button>
+        <button type="submit">Save</button>
       </form>
 
-      <section className="fetched-projects-section">
+      {showSuccessDialog && (
+        <div className="success-dialog">
+          <FontAwesomeIcon icon={faCheckCircle} className="success-icon" />
+          <p>Projects saved successfully. Visit Dashboard to see.</p>
+        </div>
+        )}
+
+      {/* <section className="fetched-projects-section">
         <h3>Your Projects</h3>
         {fetchedProjects.length > 0 ? (
           <ul>
@@ -132,7 +158,7 @@ export default function ProjectsForm() {
         ) : (
           <p>No projects found.</p>
         )}
-      </section>
+      </section> */}
     </section>
   );
 }

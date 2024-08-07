@@ -6,15 +6,21 @@ const projectSchema = new Schema({
         type: String,
         required: true
     },
+    projectDesc: {
+        type: String,
+        required: true,
+    },
     techStack: {
         type: String,
         required: true
     },
     status: {
         type: String,
-        required: true
     },
     github: {
+        type: String,
+    },
+    link: {
         type: String,
     },
     user: {

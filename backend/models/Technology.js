@@ -8,7 +8,6 @@ const technologySchema = new Schema({
     },
     proficiency: {
         type: String,
-        required: true
     },
     user: {
         type: Schema.Types.ObjectId,

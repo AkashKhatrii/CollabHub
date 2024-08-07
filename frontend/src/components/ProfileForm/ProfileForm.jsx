@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './ProfileForm.css';
+import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export default function ProfileForm({ userName, userEmail }) {
   const [name, setName] = useState('')
@@ -13,6 +15,7 @@ export default function ProfileForm({ userName, userEmail }) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  const [showSuccessDialog, setShowSuccessDialog] = useState(false);
   const fetchUserProfile = async () => {
     console.log('fetching user profile');
     try {
@@ -70,7 +73,10 @@ export default function ProfileForm({ userName, userEmail }) {
           {headers: {'Authorization': `Bearer ${token}`}}
     
       );
-      console.log(response.data); // Handle success response
+      setShowSuccessDialog(true);
+      setTimeout(() => {
+        setShowSuccessDialog(false);
+      }, 3000);
   } catch (error) {
       console.error(error); // Handle error response
   }
@@ -141,8 +147,15 @@ export default function ProfileForm({ userName, userEmail }) {
             <input type="text" id="github" value={github} onChange={(e) => setGithub(e.target.value)} />
           </div>
         </div>
-        <button type="submit" id='submit-button' onClick={handleSubmit}>Submit</button>
+        <button type="submit" id='submit-button' onClick={handleSubmit}>Save</button>
       </form>
+
+      {showSuccessDialog && (
+        <div className="success-dialog">
+          <FontAwesomeIcon icon={faCheckCircle} className="success-icon" />
+          <p>Profile saved successfully. Visit Dashboard to see.</p>
+        </div>
+        )}
     </section>
   );
 }
