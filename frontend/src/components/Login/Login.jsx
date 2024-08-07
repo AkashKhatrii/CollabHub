@@ -22,6 +22,7 @@ const Login = () => {
         password
       });
 
+      console.log(import.meta.env.VITE_BACKEND_URL);
       const { token, userId } = response.data;
       localStorage.setItem('token', token);
       setAuth({ isAuthenticated: true, token, loggedInUser: userId})
