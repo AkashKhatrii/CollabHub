@@ -13,7 +13,7 @@ const PORT = process.env.PORT || 3000;
 connectDB();
 
 app.use(cors({
-    origin: 'https://collab-hub-lac.vercel.app/'
+    origin: 'https://collab-hub-lac.vercel.app'
 }));
 app.use(express.json())
 
