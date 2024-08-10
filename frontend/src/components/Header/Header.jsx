@@ -26,7 +26,7 @@ export default function Header(){
   return (
     <header>
         <div className='header-logo'>
-            <h2>CollabMate</h2>
+            <h2>CollabHub</h2>
             <FontAwesomeIcon icon={menuActive ? faTimes : faBars} className='menu-toggle' onClick={toggleMenu}/>
         </div>
 

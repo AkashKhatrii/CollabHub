@@ -20,7 +20,7 @@ export default function MentorshipProgram() {
       <div className='content'>
         <div className='heading'>
           <h2>Mentorship Program</h2>
-          <p>At CollabMate, we empower students with mentorship to fast-track their learning and professional growth. Our program provides diverse mentoring opportunities, ensuring students achieve their goals and navigate their academic and career paths confidently.</p>
+          <p>At CollabHub, we empower students with mentorship to fast-track their learning and professional growth. Our program provides diverse mentoring opportunities, ensuring students achieve their goals and navigate their academic and career paths confidently.</p>
         </div>
 
         <div className="mentorship-titles">
