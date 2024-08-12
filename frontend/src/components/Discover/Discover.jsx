@@ -91,7 +91,7 @@ useEffect(() => {
                 <span key={techIndex} className="tech-tag">{tech}</span>
               ))}
             </div>
-            <FontAwesomeIcon icon={faComment} style={{ color: '#25D366', fontSize: '1.5rem', marginTop: '1rem', cursor: 'pointer' }} onClick={() => handleStartChat(profile._id)}/>
+            <span onClick={() => handleStartChat(profile._id)}><FontAwesomeIcon icon={faComment} style={{ color: '#25D366', fontSize: '1.5rem', marginTop: '1rem', cursor: 'pointer' }}/></span>
             </div>
         ))}
       </div>
