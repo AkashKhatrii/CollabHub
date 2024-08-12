@@ -40,6 +40,25 @@ const viewProfile = async(userId) => {
   navigate(`/profile/${userId}`)
 }
 
+const handleStartChat = async(recipientId) => {
+  try{
+    const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/auth/start-chat`, 
+      { recipientId },
+      {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      }
+    );
+
+    const chatRoomId = response.data.chatRoomId;
+    navigate(`/chat/${chatRoomId}`)
+  }catch(error){
+    console.error('Failed to start chat', error);
+  }
+}
+
+
 useEffect(() => {
   setSearchTech(discover.searchTech);
   setFilteredProfiles(discover.filteredProfiles);
@@ -69,6 +88,7 @@ useEffect(() => {
                 <span key={techIndex} className="tech-tag">{tech}</span>
               ))}
             </div>
+            <button onClick={() => handleStartChat(profile._id)}>Message</button>
           </div>
         ))}
       </div>

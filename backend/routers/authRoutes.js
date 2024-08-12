@@ -1,6 +1,6 @@
 const express = require('express');
 const { registerUser, loginUser, getUser } = require('../controllers/authController');
-const authMiddleware = require('../middlewares/authMiddleware');
+const authMiddleware = require('../middlewares/AuthMiddleware');
 const UserProfile = require('../models/UserProfile');
 const User = require('../models/User')
 const Technology = require('../models/Technology');
@@ -9,6 +9,8 @@ const jwt = require('jsonwebtoken');
 const { ObjectId } = require('mongodb');
 const Project = require('../models/Project');
 const router = express.Router();
+
+const { database, ref, get, set, push } = require('../config/firebase'); 
 
 router.post('/register', async (req, res) => {
     console.log('req')
@@ -298,6 +300,43 @@ router.get('/discover', authMiddleware, async (req, res) => {
         res.status(500).json({ message: 'Error fetching users ', error});
     }
 })
+
+router.post('/start-chat', authMiddleware, async(req, res) => {
+  const senderId = req.user.id;
+  const { recipientId } = req.body;
+  try{
+    const chatRoomRef = ref(database, 'chatrooms');
+    const chatRoomsSnapshot = await get(chatRoomRef);
+    let existingChatRoomId = null;
+
+    chatRoomsSnapshot.forEach(chatRoom => {
+      const chatRoomData = chatRoom.val();
+      const users = chatRoomData.users || [];
+
+      if(users.includes(senderId) && users.includes(recipientId)){
+        existingChatRoomId = chatRoom.key;
+      }
+    })
+
+    if (existingChatRoomId){
+      return res.status(200).json({ chatRoomId: existingChatRoomId });
+    }
+
+    
+    let newChatRoomRef = push(chatRoomRef);
+    await set(newChatRoomRef, {
+      users: [senderId, recipientId],
+      messages: [],
+      createdAt: new Date().toISOString(),
+    });
+    
+    res.status(200).json({ chatRoomId: newChatRoomRef.key });
+  }catch(error){
+    res.status(500).json({ error: error});
+  }
+})
+
+
 router.get('/test', (req, res) => {
     res.send('auth test')
 })

@@ -13,6 +13,7 @@ import { useSetRecoilState } from 'recoil'
 import { authState } from './recoil/authState'
 import axios from 'axios'
 import ViewProfile from './components/ViewProfile/ViewProfile'
+import Chat from './components/Chat/Chat';
 function App() {
 
   const [loading, setIsLoading] = useState(false);
@@ -58,6 +59,7 @@ function App() {
           <Route path='/register' element={<RegisterForm/>}/>
           <Route path='/login' element={<Login/>}/>
           <Route path="/profile/:userId" element={<ViewProfile/>} />
+          <Route path="/chat/:chatRoomId" element={<Chat/>} />
         </Routes>
       </div>
     </Router>
