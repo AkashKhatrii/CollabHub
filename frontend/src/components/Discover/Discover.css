@@ -101,6 +101,16 @@
     border-radius: 8px;
   }
   
+.msg-button{
+  padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #FF5722;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s;
+}
 @media (max-width: 500px){
   .search-bar{
     flex-direction: column;

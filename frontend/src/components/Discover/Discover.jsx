@@ -5,6 +5,9 @@ import { useRecoilState, useRecoilValue } from 'recoil';
 import { authState } from '../../recoil/authState';
 import { useNavigate } from 'react-router-dom';
 import { discoverState } from '../../recoil/discoverState';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faComment } from '@fortawesome/free-solid-svg-icons';
+
 export default function Discover() {
   const [searchTech, setSearchTech] = useState('');
   const [filteredProfiles, setFilteredProfiles] = useState([]);
@@ -88,8 +91,8 @@ useEffect(() => {
                 <span key={techIndex} className="tech-tag">{tech}</span>
               ))}
             </div>
-            <button onClick={() => handleStartChat(profile._id)}>Message</button>
-          </div>
+            <FontAwesomeIcon icon={faComment} style={{ color: '#25D366', fontSize: '1.5rem', marginTop: '1rem', cursor: 'pointer' }} onClick={() => handleStartChat(profile._id)}/>
+            </div>
         ))}
       </div>
     </section>
