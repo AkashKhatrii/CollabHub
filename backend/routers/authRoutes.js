@@ -308,6 +308,7 @@ router.post('/start-chat', authMiddleware, async(req, res) => {
   const { recipientId } = req.body;
 
   console.log(senderId, recipientId);
+  console.log(database);
   try{
     const chatRoomRef = ref(database, 'chatrooms');
     const chatRoomsSnapshot = await get(chatRoomRef);
