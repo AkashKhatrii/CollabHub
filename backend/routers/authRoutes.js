@@ -1,6 +1,6 @@
 const express = require('express');
 const { registerUser, loginUser, getUser } = require('../controllers/authController');
-const authMiddleware = require('../middlewares/AuthMiddleware');
+const authMiddleware = require('../middlewares/authMiddleware');
 const UserProfile = require('../models/UserProfile');
 const User = require('../models/User')
 const Technology = require('../models/Technology');
