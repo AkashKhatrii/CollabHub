@@ -302,13 +302,19 @@ router.get('/discover', authMiddleware, async (req, res) => {
 })
 
 router.post('/start-chat', authMiddleware, async(req, res) => {
+
+  console.log('Inside start chat');
   const senderId = req.user.id;
   const { recipientId } = req.body;
+
+  console.log(senderId, recipientId);
   try{
     const chatRoomRef = ref(database, 'chatrooms');
     const chatRoomsSnapshot = await get(chatRoomRef);
     let existingChatRoomId = null;
 
+    console.log('chatRoomRef', chatRoomRef);
+    console.log('chatRoomsSnapshot', chatRoomsSnapshot);
     chatRoomsSnapshot.forEach(chatRoom => {
       const chatRoomData = chatRoom.val();
       const users = chatRoomData.users || [];
@@ -317,6 +323,8 @@ router.post('/start-chat', authMiddleware, async(req, res) => {
         existingChatRoomId = chatRoom.key;
       }
     })
+
+    console.log('existingChat', existingChatRoomId);
 
     if (existingChatRoomId){
       return res.status(200).json({ chatRoomId: existingChatRoomId });

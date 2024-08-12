@@ -44,6 +44,7 @@ const viewProfile = async(userId) => {
 }
 
 const handleStartChat = async(recipientId) => {
+  console.log('Inside handleStartChat')
   try{
     const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/auth/start-chat`, 
       { recipientId },
@@ -53,6 +54,8 @@ const handleStartChat = async(recipientId) => {
         }
       }
     );
+
+    console.log('response', response);
 
     const chatRoomId = response.data.chatRoomId;
     navigate(`/chat/${chatRoomId}`)
