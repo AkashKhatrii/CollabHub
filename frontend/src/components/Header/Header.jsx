@@ -33,9 +33,9 @@ export default function Header(){
         <div className={`header-nav ${menuActive ? 'active' : ''}`}>
             <nav>
             <ul className='header-links'>
-            <li><Link to="/">Home</Link></li>
-            <li><Link to="/discover">Discover</Link></li>
-            <li><Link to="/profile">Profile</Link></li>
+            <li onClick={toggleMenu}><Link to="/">Home</Link></li>
+            <li onClick={toggleMenu}><Link to="/discover">Discover</Link></li>
+            <li onClick={toggleMenu}><Link to="/profile">Profile</Link></li>
             {!auth.isAuthenticated && (
               <>
                 <li><Link to='/register'>Register</Link></li>
@@ -44,8 +44,8 @@ export default function Header(){
             )}
             {auth.isAuthenticated && (
                 <>
-                <li><Link to="/dashboard">My Dashboard</Link></li>
-              <li><button onClick={handleLogout} className="logout-button">Logout</button></li>
+                <li onClick={toggleMenu}><Link to="/dashboard">My Dashboard</Link></li>
+              <li onClick={toggleMenu}><button onClick={handleLogout} className="logout-button">Logout</button></li>
               </>
             )}
           </ul>

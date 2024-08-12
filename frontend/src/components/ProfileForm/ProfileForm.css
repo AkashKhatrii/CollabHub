@@ -79,6 +79,7 @@ border-radius: 8px;
 .skill-item,
 .interest-item {
 background-color: #FF5722;
+color: white;
 border-radius: 4px;
 padding: 0.3rem 0.5rem;
 margin-right: 0.5rem;
@@ -92,8 +93,8 @@ align-items: center;
 .skill-item .remove-button, .interest-item .remove-button {
     background: none;
     border: none;
-    /* color: white; */
-    color: #333;
+    color: white;
+    /* color: #333; */
     font-size: 1rem;
     height: 100%;
     margin-left: 0.5rem;

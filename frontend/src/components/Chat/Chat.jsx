@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useLocation } from 'react-router-dom';
 import { database, set, ref, push, onValue} from '../../utils/firebase';
 import './Chat.css';
 import { useRecoilValue } from 'recoil';
@@ -10,6 +10,9 @@ export default function Chat() {
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState('');
   const { loggedInUser } = useRecoilValue(authState);
+
+  const location = useLocation();
+  const { username } = location.state || ''
   useEffect(() => {
     const chatRoomRef = ref(database, `chatrooms/${chatRoomId}/messages`);
     onValue(chatRoomRef, (snapshot) => {
@@ -40,6 +43,7 @@ export default function Chat() {
   return (
     <section className="chat-section">
       <div className="chat-messages">
+        <h3 style={{ textAlign: 'center', color: '#FF5722', marginBottom: '1rem', fontSize: '1.25rem'}}>{username}</h3>
         {messages.map((message, index) => (
           <div
             key={index}

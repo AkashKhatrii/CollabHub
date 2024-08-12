@@ -9,6 +9,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faComment } from '@fortawesome/free-solid-svg-icons';
 
 export default function Discover() {
+  const popularTags = ['Reactjs', 'Node.js', 'Python', 'Java', 'Angular', 'MongoDB', 'AWS'];
   const [searchTech, setSearchTech] = useState('');
   const [filteredProfiles, setFilteredProfiles] = useState([]);
   const [error, setError] = useState('');
@@ -43,7 +44,7 @@ const viewProfile = async(userId) => {
   navigate(`/profile/${userId}`)
 }
 
-const handleStartChat = async(recipientId) => {
+const handleStartChat = async(recipientId, recipientName) => {
   console.log('Inside handleStartChat')
   try{
     const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/auth/start-chat`, 
@@ -58,11 +59,16 @@ const handleStartChat = async(recipientId) => {
     console.log('response', response);
 
     const chatRoomId = response.data.chatRoomId;
-    navigate(`/chat/${chatRoomId}`)
+    navigate(`/chat/${chatRoomId}`, { state: { username: recipientName}})
   }catch(error){
     console.error('Failed to start chat', error);
   }
 }
+
+const handleTagClick = (tag) => {
+  setSearchTech(tag);
+  handleSearch();
+};
 
 
 useEffect(() => {
@@ -83,6 +89,17 @@ useEffect(() => {
         />
         <button onClick={handleSearch}>Search</button>
       </div>
+      <div className="popular-tags">
+      {popularTags.map((tag, index) => (
+        <span
+          key={index}
+          className="popular-tag"
+          onClick={() => handleTagClick(tag)}
+        >
+          {tag}
+        </span>
+      ))}
+    </div>
       <div className="profile-cards-container">
         {filteredProfiles && filteredProfiles.map((profile, index) => (
           <div key={index} className="profile-card">
@@ -94,7 +111,7 @@ useEffect(() => {
                 <span key={techIndex} className="tech-tag">{tech}</span>
               ))}
             </div>
-            <span onClick={() => handleStartChat(profile._id)}><FontAwesomeIcon icon={faComment} style={{ color: '#25D366', fontSize: '1.5rem', marginTop: '1rem', cursor: 'pointer' }}/></span>
+            <span onClick={() => handleStartChat(profile._id, profile.name)}><FontAwesomeIcon icon={faComment} style={{ color: '#25D366', fontSize: '1.5rem', marginTop: '1rem', cursor: 'pointer' }}/></span>
             </div>
         ))}
       </div>

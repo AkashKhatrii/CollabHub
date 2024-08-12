@@ -3,11 +3,12 @@
     flex-direction: column;
     height: 85vh;
     max-width: 600px;
-    margin: auto;
     background-color: #f4f4f4;
     border: 1px solid #ccc;
     border-radius: 10px;
     overflow: hidden;
+    margin: 1rem auto;
+    border-radius: 8px;
   }
   
   .chat-messages {
@@ -67,3 +68,9 @@
     cursor: pointer;
   }
   
+
+@media (max-width: 600px){
+    .chat-section{
+        margin: 1rem;
+    }
+}
