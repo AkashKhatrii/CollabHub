@@ -18,6 +18,14 @@ const UserSchema = new mongoose.Schema({
     profile: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'UserProfile',
+    },
+    securityQuestion: {
+        type: String,
+        required: true,
+    },
+    securityAnswer: {
+        type: String,
+        required: true,
     }
 });
 

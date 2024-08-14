@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
 import { authState } from '../../recoil/authState';
-import './Login.css'
+import './Login.css';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -22,11 +22,10 @@ const Login = () => {
         password
       });
 
-      console.log(import.meta.env.VITE_BACKEND_URL);
       const { token, userId } = response.data;
       localStorage.setItem('token', token);
-      setAuth({ isAuthenticated: true, token, loggedInUser: userId})
-      navigate('/'); // Redirect to dashboard or any other page after login
+      setAuth({ isAuthenticated: true, token, loggedInUser: userId });
+      navigate('/');
     } catch (err) {
       setError('Invalid credentials. Please try again.');
       console.error(err.message);
@@ -58,6 +57,9 @@ const Login = () => {
         </div>
         <button type="submit">Login</button>
       </form>
+      <div className="forgot-password">
+        <Link to="/forgot-password">Forgot Password?</Link>
+      </div>
     </div>
   );
 };

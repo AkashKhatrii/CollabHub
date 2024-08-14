@@ -63,6 +63,34 @@
     opacity: 0.9;
   }
   
+.register-form-section select {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+  transition: border-color 0.3s;
+}
+
+.register-form-section select:focus {
+  border-color: #FF5722;
+  outline: none;
+}
+
+.register-form-section input[type="text"].security-answer {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+  transition: border-color 0.3s;
+}
+
+.register-form-section input[type="text"].security-answer:focus {
+  border-color: #FF5722;
+  outline: none;
+}
+
 @media (max-width: 768px){
     .register-form-section{
         margin: 2rem;

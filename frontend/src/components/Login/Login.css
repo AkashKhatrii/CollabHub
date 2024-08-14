@@ -67,6 +67,22 @@ text-align: center;
 margin-top: 1rem 0;
 }
 
+.forgot-password {
+    margin-top: 1rem;
+    text-align: right;
+}
+
+.forgot-password a {
+    color: #FF5722;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.forgot-password a:hover {
+    color: #e64a19;
+}
+
 
 @media (max-width: 768px){
 .login-container{

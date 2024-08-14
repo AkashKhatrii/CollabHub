@@ -6,7 +6,7 @@ import { authState } from '../../recoil/authState';
 import { useNavigate } from 'react-router-dom';
 import { discoverState } from '../../recoil/discoverState';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faComment } from '@fortawesome/free-solid-svg-icons';
+import { faComment, faCommentDots } from '@fortawesome/free-solid-svg-icons';
 
 export default function Discover() {
   const popularTags = ['Reactjs', 'Node.js', 'Python', 'Java', 'Angular', 'MongoDB', 'AWS'];
@@ -105,13 +105,13 @@ useEffect(() => {
           <div key={index} className="profile-card">
             <img src='/images/user.png' alt={`${profile.name}'s profile`} />
             <h3 onClick={() => viewProfile(profile._id)}>{profile.name}</h3>
-            <p>Full Stack Developer with a passion for React and Node.js</p>
+            <p>{profile.bio ? profile.bio : 'Full Stack Developer with a passion for React and Node.js'}</p>
             <div className="technologies">
               {profile.technologies.map((tech, techIndex) => (
                 <span key={techIndex} className="tech-tag">{tech}</span>
               ))}
             </div>
-            <span onClick={() => handleStartChat(profile._id, profile.name)}><FontAwesomeIcon icon={faComment} style={{ color: '#25D366', fontSize: '1.5rem', marginTop: '1rem', cursor: 'pointer' }}/></span>
+            <span onClick={() => handleStartChat(profile._id, profile.name)}><FontAwesomeIcon icon={faCommentDots} style={{ color: '#25D366', fontSize: '1.5rem', marginTop: '1rem', cursor: 'pointer' }}/></span>
             </div>
         ))}
       </div>

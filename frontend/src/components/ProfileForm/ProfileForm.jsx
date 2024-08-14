@@ -8,6 +8,7 @@ export default function ProfileForm({ userName, userEmail }) {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('');
   const [github, setGithub] = useState('');
+  const [bio, setBio] = useState('')
   const [skills, setSkills] = useState([]);
   const [interests, setInterests] = useState([]);
   const [skillInput, setSkillInput] = useState('');
@@ -64,12 +65,11 @@ export default function ProfileForm({ userName, userEmail }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Inside form', github)
     try {
       const token = localStorage.getItem('token');
       const response = await axios.post(
           `${import.meta.env.VITE_BACKEND_URL}/api/auth/completeProfile`,
-          { github, skills, interests },
+          { github, skills, interests, bio },
           {headers: {'Authorization': `Bearer ${token}`}}
     
       );
@@ -97,10 +97,10 @@ export default function ProfileForm({ userName, userEmail }) {
           </div>
         </div>
         <div className="form-row">
-          {/* <div className="form-group">
-            <label htmlFor="profile-picture">Profile Picture</label>
-            <input type="file" id="profile-picture" />
-          </div> */}
+          <div className="form-group">
+            <label htmlFor="bio">A short description about yourself</label>
+            <input type="text" id="bio" value={bio} onChange={(e) => setBio(e.target.value)} />
+          </div>
           <div className="form-group">
             <label htmlFor="skills">Skills</label>
             <input

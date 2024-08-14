@@ -20,7 +20,6 @@ export default function UserDashboard() {
                 'Authorization': `Bearer ${token}`
             }
         });
-        console.log('response', response);
         setFetchedProjects(response.data.projects || []);
     }catch(error){
         console.error("Erro loading projects:", error);

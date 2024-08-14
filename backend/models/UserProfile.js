@@ -12,6 +12,9 @@ const ProfileSchema = new mongoose.Schema({
     github: {
         type: String,
     },
+    bio: {
+        type: String,
+    },
     skills: {
         type: [String], // Array of skills
     },

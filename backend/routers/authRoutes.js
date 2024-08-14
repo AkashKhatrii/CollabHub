@@ -14,18 +14,16 @@ const { database, ref, get, set, push } = require('../config/firebase');
 
 router.post('/register', async (req, res) => {
     console.log('req')
-    const { name, email, password } = req.body;
-    console.log(email);
+    const { name, email, password, securityQuestion, securityAnswer } = req.body;
   
     try{
-      console.log("inside try", email)
       let user = await User.findOne({ email });
   
       if (user){
           res.status(400).json({msg: 'user with given email already exists '})
       }
   
-      user = new User({ name, email, password });
+      user = new User({ name, email, password, securityQuestion, securityAnswer });
   
       const salt = await bcrypt.genSalt(5);
       user.password = await bcrypt.hash(password, salt);
@@ -104,8 +102,7 @@ router.get('/', authMiddleware, async (req, res) => {
 
 
 router.post('/completeProfile', authMiddleware, async (req, res) => {
-    const { github, skills, interests } = req.body;
-    console.log('completeProfile', github)
+    const { github, skills, interests, bio } = req.body;
     try {
         const profile = await UserProfile.findOne({ user: req.user.id });
 
@@ -117,9 +114,9 @@ router.post('/completeProfile', authMiddleware, async (req, res) => {
         }
 
         profile.github = github;
+        profile.bio = bio;
         profile.skills = skills;
         profile.interests = interests;
-        console.log(profile);
         await profile.save();
         res.json({ message: 'Profile updated successfully', profile });
     }catch (err) {
@@ -274,26 +271,24 @@ router.get('/projects', authMiddleware, async (req, res) => {
 
 router.get('/discover', authMiddleware, async (req, res) => {
     const { techName } = req.query;
-    console.log("Inside discover")
-
     try{
         const technologies = await Technology.find({
             name: { $regex: new RegExp(`^${techName}$`, 'i') }
         }).populate('user', 'name email');
-
         const users = [];
         for (const tech of technologies) {
-            const user = tech.user.toObject(); // Convert Mongoose document to plain object
+            let user = tech.user.toObject(); // Convert Mongoose document to plain object
             user.technologies = [];
-            users.push(user);
+            user.bio = ''
+            users.push(user)
         }
-
-        // Fetch all technologies for each user and attach them to the user object
-        for (const user of users) {
+        for (let user of users) {
             const userTechnologies = await Technology.find({ user: user._id });
+            const profile = await UserProfile.findOne({ user: user._id});
+            console.log(profile)
+            user.bio = profile.bio ; // Check if bio exists
             user.technologies = userTechnologies.map(tech => tech.name);
         }
-
         res.status(200).json(users);
 
     }catch(error){
@@ -345,7 +340,38 @@ router.post('/start-chat', authMiddleware, async(req, res) => {
   }
 })
 
+router.post('/security-question', async (req, res) => {
+  try {
+      const { email } = req.body;
+      const user = await User.findOne({ email });
+      if (!user) return res.status(404).send('User not found.');
 
+      res.json({ securityQuestion: user.securityQuestion });
+  } catch (error) {
+      console.error(error);
+      res.status(500).send('Error retrieving security question.');
+  }
+});
+
+router.post('/reset-password-via-security-question', async (req, res) => {
+  try {
+      const { email, securityAnswer, newPassword } = req.body;
+      const user = await User.findOne({ email });
+      if (!user) return res.status(404).send('User not found.');
+
+      // const isAnswerValid = await bcrypt.compare(securityAnswer, user.securityAnswer);
+      if (securityAnswer !== user.securityAnswer){
+        return res.status(400).send('Incorrect security answer.');
+      }
+      user.password = await bcrypt.hash(newPassword, 10);
+      await user.save();
+
+      res.send('Password reset successful.');
+  } catch (error) {
+      console.error(error);
+      res.status(500).send('Error resetting password.');
+  }
+});
 router.get('/test', (req, res) => {
     res.send('auth test')
 })
