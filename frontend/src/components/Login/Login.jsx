@@ -21,10 +21,9 @@ const Login = () => {
         email,
         password
       });
-
-      const { token, userId } = response.data;
+      const { token, userId, userName } = response.data;
       localStorage.setItem('token', token);
-      setAuth({ isAuthenticated: true, token, loggedInUser: userId });
+      setAuth({ isAuthenticated: true, token, loggedInUser: userId, loggedInUserName: userName });
       navigate('/');
     } catch (err) {
       setError('Invalid credentials. Please try again.');
@@ -38,7 +37,7 @@ const Login = () => {
       {error && <p>{error}</p>}
       <form onSubmit={handleSubmit}>
         <div className="form-group">
-          <label>Email:</label>
+          <label>Username:</label>
           <input
             type="email"
             value={email}

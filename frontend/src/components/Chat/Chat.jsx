@@ -11,7 +11,7 @@ export default function Chat() {
   const [newMessage, setNewMessage] = useState('');
   const { loggedInUser } = useRecoilValue(authState);
 
-  const location = useLocation();
+  const location = useLocation(); // for prop/state passed to it from navigate()
   const { username } = location.state || ''
   useEffect(() => {
     const chatRoomRef = ref(database, `chatrooms/${chatRoomId}/messages`);

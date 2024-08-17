@@ -2,7 +2,7 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserPlus, faUserEdit, faSearch, faHandshake, faUsers, faTasks } from '@fortawesome/free-solid-svg-icons';
 import './HowItWorks.css';
-
+import { Link } from 'react-router-dom';
 export default function HowItWorks() {
   const steps = [
     {
@@ -51,7 +51,7 @@ export default function HowItWorks() {
         ))}
       </div>
       <div className="cta">
-        <button>Get Started Now</button>
+        <button><Link to='/register' className='get-started'>Get Started Now</Link></button>
       </div>
     </section>
   );

@@ -69,7 +69,7 @@ router.post('/login', async (req, res) => {
       if (!isMatch) {
         return res.status(400).json({ message: 'Invalid credentials' });
       }
-  
+      const userName = user.name;
       const payload = {
         user: {
           id: user.id,
@@ -82,7 +82,7 @@ router.post('/login', async (req, res) => {
       jwt.sign(payload, process.env.JWT_SECRET, (err, token) => {
         if (err) throw err;
         const userId = user.id;
-        res.json({ token, userId });
+        res.json({ token, userId, userName });
       });
     } catch (err) {
       console.error(err.message);
@@ -309,8 +309,6 @@ router.post('/start-chat', authMiddleware, async(req, res) => {
     const chatRoomsSnapshot = await get(chatRoomRef);
     let existingChatRoomId = null;
 
-    console.log('chatRoomRef', chatRoomRef);
-    console.log('chatRoomsSnapshot', chatRoomsSnapshot);
     chatRoomsSnapshot.forEach(chatRoom => {
       const chatRoomData = chatRoom.val();
       const users = chatRoomData.users || [];
@@ -320,7 +318,6 @@ router.post('/start-chat', authMiddleware, async(req, res) => {
       }
     })
 
-    console.log('existingChat', existingChatRoomId);
 
     if (existingChatRoomId){
       return res.status(200).json({ chatRoomId: existingChatRoomId });
@@ -339,6 +336,34 @@ router.post('/start-chat', authMiddleware, async(req, res) => {
     res.status(500).json({ error: error});
   }
 })
+
+router.get('/chatrooms', authMiddleware, async (req, res) => {
+  const userId = req.user.id;
+
+  try {
+    const chatRoomsRef = ref(database, 'chatrooms');
+    const chatRoomsSnapshot = await get(chatRoomsRef);
+    
+    const userChatRooms = [];
+
+    chatRoomsSnapshot.forEach(chatRoom => {
+      const chatRoomData = chatRoom.val();
+      const users = chatRoomData.users || [];
+
+      if (users.includes(userId)) {
+        userChatRooms.push({
+          chatRoomId: chatRoom.key,
+          ...chatRoomData,
+        });
+      }
+    });
+
+    res.status(200).json(userChatRooms);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
 
 router.post('/security-question', async (req, res) => {
   try {

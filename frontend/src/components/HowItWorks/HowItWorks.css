@@ -103,7 +103,10 @@
     /* background-color: #555; */
     opacity: 0.9;
     }
-  
+.get-started{
+  text-decoration: none;
+  color: white;
+}
 
   @media only screen and (max-width: 600px){
     .how-it-works-section h2{

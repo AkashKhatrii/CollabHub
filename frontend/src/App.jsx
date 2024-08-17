@@ -15,6 +15,7 @@ import axios from 'axios'
 import ViewProfile from './components/ViewProfile/ViewProfile'
 import Chat from './components/Chat/Chat';
 import ForgotPassword from './components/ForgotPassword/ForgotPassword';
+import Chats from './components/Chats/Chats';
 function App() {
 
   const [loading, setIsLoading] = useState(false);
@@ -61,6 +62,7 @@ function App() {
           <Route path='/login' element={<Login/>}/>
           <Route path="/profile/:userId" element={<ViewProfile/>} />
           <Route path="/chat/:chatRoomId" element={<Chat/>} />
+          <Route path="/chats" element={<Chats/>} />
           <Route path="/forgot-password" element={<ForgotPassword/>} />
         </Routes>
       </div>
