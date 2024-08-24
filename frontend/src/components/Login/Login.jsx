@@ -37,7 +37,7 @@ const Login = () => {
       {error && <p>{error}</p>}
       <form onSubmit={handleSubmit}>
         <div className="form-group">
-          <label>Username:</label>
+          <label>Email:</label>
           <input
             type="email"
             value={email}
